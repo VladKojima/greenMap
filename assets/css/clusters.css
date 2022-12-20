@@ -1,0 +1,95 @@
+.for_back {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.back_btn {
+    background-color: #0C6CBF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.back_btn:hover {
+    background-color: #09467a;
+    transition: 1s;
+    color: white;
+}
+
+h4.cluster {
+    text-align: center;
+}
+
+.container_map {
+    padding-top: 20px !important;
+}
+
+.dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.306);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 100vh;
+}
+
+.dark .card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 50vw;
+    position: relative;
+}
+
+.dark .card h2 {
+    text-align: center;
+    border-bottom: 1px solid var(--grey);
+    padding: 20px 0;
+}
+
+.dark .card img {
+    height: 30vh;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.dark .card h5 {
+    color: var(--blue);
+    padding: 0 20px;
+}
+
+.dark .card .coordinates {
+    padding: 0 20px 30px 20px;
+    color: var(--grey);
+}
+
+.dark .card .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: var(--grey);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dark .card .close:hover {
+    color: black;
+}
+
+.left_but .button_hidden:hover{
+    background-color: #09467a;
+    transition: 1s;
+}
+
+.button_filters:hover{
+    background-color: #09467a;
+    transition: 1s;
+}

@@ -1,0 +1,3 @@
+F:\green\green\obj\Debug\green.njsproj.AssemblyReference.cache
+F:\green\green\obj\Debug\green.njsproj.CoreCompileInputs.cache
+F:\green\green\bin\Microsoft.NodejsTools.WebRole.dll
