@@ -1,0 +1,177 @@
+@media screen and (max-width: 1230px) {
+    .main {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .greenLines {
+        width: 250px;
+    }
+}
+@media screen and (max-width:2560px) {
+    .textFrame{
+        top: 2vw;
+        margin: 20px 0px 20px 0px;
+        width: 100%;
+    }
+    #header{
+        height: 90px;
+    }
+    #footer{
+        height: 90px;
+    }
+    .wrap{
+        height: 90px;
+    }
+    .textOne{
+        font-size: 3vw;
+    }
+    .textTwo{
+        font-size: 2vw;
+    }
+}
+@media screen and (max-width:1440px) {
+    .textFrame{
+        top: 2vw;
+    }
+    .textOne{
+        font-size: 4vw;
+    }
+    .textTwo{
+        font-size: 3vw;
+    }
+}
+@media screen and (max-width:1024px) {
+    .image{
+        height: 300px;
+    }
+    .image img{
+        height: 300px;
+    }
+    .textFrame{
+        top: 2vw;
+    }
+    .textOne{
+        font-size: 3vw;
+    }
+    .textTwo{
+        font-size: 3vw;
+    }
+    .main{
+        height: 350px;
+    }
+    #logoWithLines{
+        height: 180px;
+    }
+    .blocks{
+        height: 110px;
+    }
+    #header{
+        height: 50px;
+    }
+    #footer{
+        height: 50px;
+    }
+    .wrap{
+        height: 50px;
+    }
+    .menu-main{
+        /* margin-top: 10px; */
+    }
+}
+@media screen and (max-width:768px) {
+    .image{
+        height: 210px;
+    }
+    .image img{
+        height: 210px;
+    }
+    .textFrame{
+        top: 1vw;
+    }
+    .textOne{
+        font-size: 3vw;
+    }
+    .textTwo{
+        font-size: 3vw;
+    }
+    #header{
+        height: 50px;
+    }
+    #footer{
+        height: 50px;
+    }
+    .wrap{
+        height: 50px;
+    }
+}
+@media screen and (max-width:425px) {
+    .textFrame{
+        /* margin-top: 5vw; */
+    }
+    .textOne{
+        font-size: 4vw;
+    }
+    .textTwo{
+        font-size: 3vw;
+    }
+    #header{
+        height: 50px;
+    }
+    #footer{
+        height: 50px;
+    }
+    .wrap{
+        height: 50px;
+    }
+    .image{
+        height: 180px;
+    }
+    .image img{
+        height: 180px;
+    }
+    .menu-main{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width:375px) {
+    .image{
+        height: 210px;
+    }
+    .image img{
+        height: 210px;
+    }
+    #header{
+        height: 40px;
+    }
+    #footer{
+        height: 40px;
+    }
+    .wrap{
+        height: 40px;
+    }
+    .textFrame{
+        top: 1vw;
+    }
+    .textOne{
+        font-size: 4vw;
+    }
+    .textTwo{
+        font-size: 4vw;
+    }
+}
+@media screen and (max-width:320px) {
+    .textOne{
+        font-size: 4vw;
+    }
+    .textTwo{
+        font-size: 4vw;
+    }
+}
+
+
+
+
+
+

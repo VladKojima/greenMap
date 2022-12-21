@@ -1,0 +1,23 @@
+.cluster {
+    margin-top: 30px;
+    text-align: center;
+}
+
+select {
+    margin-top: 30px;
+}
+
+table {
+    margin-top: 30px;
+}
+
+.add_tree {
+    background-color: var(--blue);
+    color: white;
+    display: block;
+    width: 200px;
+    padding: 10px 30px;
+    margin: 30px auto;
+    text-align: center;
+}
+
