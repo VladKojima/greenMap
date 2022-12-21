@@ -1,4 +1,6 @@
 var myMap;
+function setDefImg(elem)
+{elem.setAttribute('src', "../assets/images/testicon.png")}
 const m = new Map();
 m.set(1, [51.529752, 45.977860]);
 m.set(2, [51.531465, 45.980210]);
