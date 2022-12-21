@@ -3,8 +3,6 @@ let img = card.querySelector('.card .top .img');
 let coords = card.getElementsByClassName('coordinates')[0];
 let h5_name = card.querySelector('h5 span.name');
 
-img.onerror=()=>setDefImg(img)
-
 let index_tree = -1;
 
 let dark = document.getElementsByClassName('dark')[0];

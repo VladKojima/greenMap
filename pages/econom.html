@@ -122,12 +122,78 @@
                 <div class="left_but">
                     <input type="submit" name="send" value="Меню" class="left_but button_hidden" onclick="hideFilter()"></input>
                 </div>
+
+
+
+                <div class="card">
+                    <div class="top">
+                        <div class="header">
+                            <div class="img" style="background-image: url(../assets/images/topol.jpg);" onclick="open_photo()"></div>
+                            <h5><span class="number">1.123</span> <span class="name">Тополь</span></h5>
+                        </div>
+                        <div class="props">
+                            <div>
+                                <img src="../assets/images/geoposition.png" alt="">
+                                <span class="coordinates">51.456 , 46.456</span>
+                            </div>
+                            <div class="place">
+                                Площадка №1 СГТУ (Корпуса)
+                            </div>
+                        </div>
+                        <img class="close" onclick="close_card()" src="../assets/images/closecircle.png" alt="">
+                    </div>
+                    <div class="body">
+                        <div class="r rbig">
+                            <img src="../assets/images/maximize4.png" alt="" width="16px">
+                            <span class="inrow">
+                                Длина: <span clas="size">3</span>м;
+                            </span>
+                            <span class="inrow">
+                                Диаметр кроны: <span clas="d">2.0</span>;
+                            </span>
+                            <span class="inrow">
+                                Диаметр ствола: <span clas="d">0.055</span>
+                            </span>
+                        </div>
+
+                        <!-- <div class="mainpart"> -->
+                            <div class="r">
+                                Сухие ветви : <span class="content stick">нет</span>
+                            </div>
+                            <div class="r">
+                                Отслоение коры : <span class="content cora">нет</span>
+                            </div>
+                            <div class="r">
+                                Трещины : <span class="content crack">нет</span>
+                            </div>
+                            <div class="r">
+                                Потеки сока : <span class="content juice">нет</span>
+                            </div>
+                            <div class="r">
+                                Наклон : <span class="content incline">0</span>
+                            </div>
+                            <div class="r">
+                                Нависание над тротуаром : <span class="content sidewalk">нет</span>
+                            </div>
+                            <div class="r">
+                                Нависание над проводами : <span class="content cabels">есть</span> <span class="content cabels_comments">(газопровод)</span>
+                            </div>
+                            <div class="r">
+                                Нависание над дорогой : <span class="content road">есть</span>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <div class="dark" onclick="close_card()">
+    <div class="dark" onclick="close_photo()">
+        <img src="" alt="">
+    </div>
+
+    <!-- <div class="dark" onclick="close_card()">
         <div class="card">
             <h2>Карточка дерева</h2>
             <img alt="">
@@ -135,7 +201,7 @@
             <div class="coordinates">Координаты</div>
             <i class="fa-solid fa-xmark close" onclick="close_card()"></i>
         </div>
-    </div>
+    </div> -->
 
     <div class='balloon' style="display:none"><img><span></span><a class='balloon_btn'>Подробнее</a></div>
 
