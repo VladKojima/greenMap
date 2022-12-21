@@ -7,6 +7,8 @@ m.set(4, [51.540273,46.039105]);
 
 const types = new Set();
 
+let balloon = document.getElementsByClassName('balloon')[0];
+
 data.forEach((item) => {
   types.add(item['name']);
 });
@@ -84,6 +86,7 @@ function init(){
 
 
 }
+let datas;
 function app(){
     datas = data.filter(function(elm){
         let fl=false;
@@ -149,10 +152,19 @@ function app(){
     ),
 
     array = [];
+
     for (let i = 0; i < datas.length; i++) {
+        let elem = balloon.cloneNode(true);
+        let img =elem.querySelector('img');
+        img.src="../assets/images/"+datas[i]["photo"];
+        img.setAttribute("onerror", "setDefImg(this)")
+        elem.querySelector('span').textContent=datas[i]['name'];
+        elem.querySelector('a').setAttribute('onclick', 'open_card('+i+')')
+        elem.style.display = null
         array[i] = new ymaps.Placemark([datas[i]['coordinates'][0], datas[i]['coordinates'][1]], {
             hintContent: datas[i]['name'],
-            balloonContent: "<div class='balloon'><img src='../assets/images/"+datas[i]["photo"]+"'><span>"+datas[i]['name']+"</span><a class='balloon_btn' onclick='open_card("+i+")'>Подробнее</a></div>",
+            balloonContent: elem.outerHTML
+            //balloonContent: "<div class='balloon'><img src='../assets/images/"+datas[i]["photo"]+"'><span>"+datas[i]['name']+"</span><a class='balloon_btn' onclick='open_card("+i+")'>Подробнее</a></div>",
 
         }, {
             iconLayout: 'default#imageWithContent',
