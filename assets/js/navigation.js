@@ -13,7 +13,7 @@ let photo = dark.getElementsByTagName('img')[0];
 function open_card(index) {
 
     index_tree = index;
-    img.setAttribute("style", "background-image: url(../assets/images/"+datas[index]['photo']+")");
+    img.setAttribute("style", "background-image: url('../assets/images/"+datas[index]['photo']+"')");
     h5_name.innerHTML = datas[index]['name'];
     coords.innerHTML = datas[index]['coordinates'][0] + ", " + datas[index]['coordinates'][1];
     card.querySelector('[class=number]').innerHTML = datas[index]['id'];
