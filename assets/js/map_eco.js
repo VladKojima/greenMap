@@ -1,6 +1,9 @@
 var myMap;
+let clusterer;
+
 function setDefImg(elem)
 {elem.setAttribute('src', "../assets/images/testicon.png")}
+
 const m = new Map();
 m.set(1, [51.529752, 45.977860]);
 m.set(2, [51.531465, 45.980210]);
@@ -81,8 +84,15 @@ function init(){
 
     array = [];
 
-    myMap.controls.remove('rulerControl')
-    myMap.controls.remove('searchControl')
+    myMap.controls.remove('rulerControl');
+    myMap.controls.remove('searchControl');
+
+    clusterer = new ymaps.Clusterer({
+      gridSize: 128,
+      preset: 'islands#invertedVioletClusterIcons',
+      maxZoom:19,
+      clusterDisableClickZoom: true });
+    myMap.geoObjects.add(clusterer);
 
     app();
 
@@ -90,6 +100,10 @@ function init(){
 }
 let datas;
 function app(){
+    dragReset();
+    dragSave();
+    clusterer.removeAll();
+
     datas = data.filter(function(elm){
         let fl=false;
         if (document.getElementById('studTown').checked && elm['location']==1) {
@@ -147,11 +161,6 @@ function app(){
         }
         return fl;
     });
-    myMap.geoObjects.removeAll();
-
-    MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-    ),
 
     array = [];
 
@@ -163,21 +172,33 @@ function app(){
         elem.querySelector('span').textContent=datas[i]['name'];
         elem.querySelector('a').setAttribute('onclick', 'open_card('+i+')')
         elem.style.display = null
-        array[i] = new ymaps.Placemark([datas[i]['coordinates'][0], datas[i]['coordinates'][1]], {
+        array[i] = new ymaps.Placemark(datas[i]['coordinates'], {
             hintContent: datas[i]['name'],
-            balloonContent: elem.outerHTML
-            //balloonContent: "<div class='balloon'><img src='../assets/images/"+datas[i]["photo"]+"'><span>"+datas[i]['name']+"</span><a class='balloon_btn' onclick='open_card("+i+")'>Подробнее</a></div>",
+            balloonContent: elem.outerHTML,
+            clusterCaption: '<strong>' + datas[i]['id']+' '+datas[i]['name'] + '</strong>'
 
         }, {
             iconLayout: 'default#imageWithContent',
             iconImageHref: '../assets/images/'+datas[i]['icon'],
             iconImageSize: [28, 28],
             iconImageOffset: [-24, -24],
-            iconContentLayout: MyIconContentLayout
+            iconContentLayout: MyIconContentLayout,
         });
 
-        myMap.geoObjects.add(array[i]);
+        array[i].events.add('beforedragstart', (event)=>{
+          if(!drags.has(array[i]))
+          {
+            drags.set(array[i], datas[i]);
+          }
+
+        })
+        array[i].events.add('dragend', (event)=>{
+          clusterer.remove(array[i]);
+          clusterer.add(array[i]);
+        })
     }
+
+    clusterer.add(array);
 
     let item = [];
     if(studTown.checked) item.push(1);
@@ -198,3 +219,46 @@ function hideFilter(){
         fhide=true;
     }
 }
+
+const drags = new Map();
+
+function dragReset()
+{
+  for(let item of drags.entries())
+  {
+    item[0].geometry.setCoordinates(item[1]['coordinates']);
+  }
+}
+
+function dragStart()
+{
+  array.forEach(item => item.options.set('draggable', true));
+
+  dragButton.onclick = dragSave;
+  dragButton.value = "Сохранить";
+
+  resetButton.style.display = null;
+}
+
+function  dragSave()
+{
+  for(let item of drags.entries())
+  {
+    // сохранение координат на сервере
+
+    item[1]['coordinates']=item[0].geometry.getCoordinates();
+  }
+
+  drags.clear();
+
+  array.forEach(item => item.options.set('draggable', false));
+
+  dragButton.onclick = dragStart;
+  dragButton.value = "Редактировать";
+
+  resetButton.style.display = "none";
+}
+
+dragButton.onclick=dragStart;
+
+resetButton.onclick=dragReset;

@@ -8,7 +8,9 @@
         "icon" : "deciduous_tree.svg",
         'overhanging_d' : false,
         'overhanging_t' : false,
-        'overhanging_p' : false
+        'overhanging_p' : false,
+
+        "id" :999
     },
     {
       "location" : 1,
@@ -19,7 +21,9 @@
     "icon" : "deciduous_tree.svg",
     'overhanging_d' : false,
     'overhanging_t' : false,
-    'overhanging_p' : false
+    'overhanging_p' : false,
+
+    "id" : 998
     }
 ]
 arr.forEach((item) => {
