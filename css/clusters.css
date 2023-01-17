@@ -1,3 +1,10 @@
+:root{
+  --accent-color:#E3000F;
+  --accent-color-hover: #fc0314;
+  --main-color:#0061C7;
+  --main-color-hover:#007bff; 
+}
+
 .for_back {
     margin-top: 20px;
     display: flex;
@@ -5,7 +12,7 @@
 }
 
 .back_btn {
-    background-color: #0C6CBF;
+    background-color:var(--accent-color);
     color: white;
     padding: 10px 20px;
     border-radius: 3px;
@@ -13,7 +20,7 @@
 }
 
 .back_btn:hover {
-    background-color: #09467a;
+    background-color: var(--accent-color-hover);
     transition: 1s;
     color: white;
 }
@@ -42,12 +49,12 @@ h4.cluster {
 
 
 .left_but .button_hidden:hover{
-    background-color: #09467a;
+    background-color: --accent-color;
     transition: 1s;
 }
 
 .button_filters:hover{
-    background-color: #09467a;
+    background-color: --accent-color-hover;
     transition: 1s;
 }
 

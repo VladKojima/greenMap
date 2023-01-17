@@ -1,14 +1,14 @@
 @font-face {
-    font-family: Jost;
-    src: url(../fonts/Jost.ttf);
+    font-family: Montserrat;
+    src: url('../assets/fonts/static/Montserrat-Regular.ttf');
 }
 body {
     margin: 0;
     padding: 0;
-    --blue: rgb(11, 11, 158);
+    --blue: #0061C7;
     --grey: rgb(124, 124, 124);
-    --red: #e3000f;
-    font-family: Jost;
+    --red: #E3000F;
+    font-family: Montserrat;
     height: 100vh;
 }
 
@@ -23,7 +23,7 @@ a {
 }
 
 nav.topmenu {
-    background-color: #0C6CBF;
+    background-color: var(--blue);
     height: 70px;
     color: white;
     padding: 20px 0;

@@ -11,7 +11,7 @@ let photo = dark.getElementsByTagName('img')[0];
 function open_card(index) {
 
     index_tree = index;
-    img.setAttribute("style", "background-image: url(../assets/images/"+data[index]['photo']+")");
+    img.setAttribute("style", "background-image: url(/assets/images/"+data[index]['photo']+")");
     h5_name.innerHTML = data[index]['name'];
     coords.innerHTML = data[index]['coordinates'][0] + ", " + data[index]['coordinates'][1];
     
