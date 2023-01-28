@@ -2,20 +2,33 @@
     font-family: Jost;
     src: url(../fonts/Jost.ttf);
 }
+@font-face {
+    font-family: Montserrat;
+    src: url('../assets/fonts/static/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: Montserrat;
+    src: url('../fonts/static/Montserrat-Regular.ttf');
+}
 body {
-    margin: 0;
-    padding: 0;
-    --blue: rgb(11, 11, 158);
+    width: 100%;
+    height: 100vh;
+    --blue: #0061C7;
     --grey: rgb(124, 124, 124);
     --red: #e3000f;
-    font-family: Jost;
-    height: 100vh;
+    font-family: Montserrat;
 }
-
 a {
     text-decoration: none;
 }
-
+a.header__title-link{
+    color:#fff;
+    text-decoration: none;
+}
+a.header__title-link:hover{
+    color:#fff;
+    text-decoration: none;
+}
 .flex_container {
     display: flex;
     flex-direction: column;
@@ -23,7 +36,7 @@ a {
 }
 
 nav.topmenu {
-    background-color: #0C6CBF;
+    background-color: var(--blue);
     height: 70px;
     color: white;
     padding: 20px 0;
@@ -35,8 +48,8 @@ nav.topmenu h2 {
 }
 
 .container_map {
-    padding: 50px;
-    height: 100%;
+    /* padding: 10px; */
+    height: 100vh;
 }
 
 .map {
