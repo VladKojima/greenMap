@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель. Пользователи</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/media.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../assets/js/index.js">
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="wrap">
+            <div id="header">
+                <ul class="header__content">
+                    <li class="header__content-item"><a href="index.html"><img class="img-fluid header__content__img"  src="../assets/images/icons/home.svg"></a></li>
+                    <li class="header__content-item "><a class="admin-nav " href="index.html">Площадки</a></li>
+                    <li class="header__content-item "><a class="admin-nav active" href="trees.html">Насаждения</a></li>
+                    <li class="header__content-item "><a class="admin-nav " href="users.html">Пользователи</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="#">Статистика</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="#">Настройки</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="../index.html"><img class="img-fluid header__content__img"  src="../assets/images/icons/login.svg"></a></li>
+                </ul>
+                
+            </div>
+        </div>
+    <section class="container">
+      <!--   <div id="logoWithLines">
+            <div class="greenLines"></div>
+            <div><img class="greenLogo" src="assets/images/green_logo.svg"></div>
+            <div class="greenLines"></div>
+        </div> -->
+        <div class="text">
+     <!--            <h3>Уважаемые посетители!</h3>
+        <p>Вы находитесь на главной странице информационной системы, разработанной для учета зеленых насаждений, произрастающих на территории СГТУ имени Гагарина Ю.А.</p>
+        <p>На данный момент система поддерживает работу с 4 площадками:</p>
+        <ul class="text__list">
+            <li> <?xml version="1.0" ?><svg class='text__list-bullet' viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M413.8 447.1L256 448l0 31.99C256 497.7 241.8 512 224.1 512c-17.67 0-32.1-14.32-32.1-31.99l0-31.99l-158.9-.0099c-28.5 0-43.69-34.49-24.69-56.4l68.98-79.59H62.22c-25.41 0-39.15-29.8-22.67-49.13l60.41-70.85H89.21c-21.28 0-32.87-22.5-19.28-37.31l134.8-146.5c10.4-11.3 28.22-11.3 38.62-.0033l134.9 146.5c13.62 14.81 2.001 37.31-19.28 37.31h-10.77l60.35 70.86c16.46 19.34 2.716 49.12-22.68 49.12h-15.2l68.98 79.59C458.7 413.7 443.1 447.1 413.8 447.1z" stroke="green" fill="green" /></svg>Площадка №1-корпуса СГТУ им. Гагарина Ю.А.(ул. Политехническая)</li>
+            <li><?xml version="1.0" ?><svg class='text__list-bullet' viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M413.8 447.1L256 448l0 31.99C256 497.7 241.8 512 224.1 512c-17.67 0-32.1-14.32-32.1-31.99l0-31.99l-158.9-.0099c-28.5 0-43.69-34.49-24.69-56.4l68.98-79.59H62.22c-25.41 0-39.15-29.8-22.67-49.13l60.41-70.85H89.21c-21.28 0-32.87-22.5-19.28-37.31l134.8-146.5c10.4-11.3 28.22-11.3 38.62-.0033l134.9 146.5c13.62 14.81 2.001 37.31-19.28 37.31h-10.77l60.35 70.86c16.46 19.34 2.716 49.12-22.68 49.12h-15.2l68.98 79.59C458.7 413.7 443.1 447.1 413.8 447.1z" stroke="green" fill="green"/></svg>Площадка №2-студенческий городок СГТУ им. Гагарина Ю.А.</li>
+            <li><?xml version="1.0" ?><svg class='text__list-bullet' viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M413.8 447.1L256 448l0 31.99C256 497.7 241.8 512 224.1 512c-17.67 0-32.1-14.32-32.1-31.99l0-31.99l-158.9-.0099c-28.5 0-43.69-34.49-24.69-56.4l68.98-79.59H62.22c-25.41 0-39.15-29.8-22.67-49.13l60.41-70.85H89.21c-21.28 0-32.87-22.5-19.28-37.31l134.8-146.5c10.4-11.3 28.22-11.3 38.62-.0033l134.9 146.5c13.62 14.81 2.001 37.31-19.28 37.31h-10.77l60.35 70.86c16.46 19.34 2.716 49.12-22.68 49.12h-15.2l68.98 79.59C458.7 413.7 443.1 447.1 413.8 447.1z" stroke="green" fill="green"/></svg>Площадка №3-СЭИ</li>
+            <li><?xml version="1.0" ?><svg class='text__list-bullet' viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M413.8 447.1L256 448l0 31.99C256 497.7 241.8 512 224.1 512c-17.67 0-32.1-14.32-32.1-31.99l0-31.99l-158.9-.0099c-28.5 0-43.69-34.49-24.69-56.4l68.98-79.59H62.22c-25.41 0-39.15-29.8-22.67-49.13l60.41-70.85H89.21c-21.28 0-32.87-22.5-19.28-37.31l134.8-146.5c10.4-11.3 28.22-11.3 38.62-.0033l134.9 146.5c13.62 14.81 2.001 37.31-19.28 37.31h-10.77l60.35 70.86c16.46 19.34 2.716 49.12-22.68 49.12h-15.2l68.98 79.59C458.7 413.7 443.1 447.1 413.8 447.1z" stroke="green" fill="green"/></svg>Площадка №4-Общежития СЭИ</li>
+        </ul>
+        <p>Для работы с информационной системой необходимо выбрать одну из площадок.</p> -->
+        <h3>Зеленые насаждения</h3>
+        <div class="filter___block">
+            <form action="" class="form-filter">
+                <select name="point" id="point" class="form-element-input">
+                    <option value="Площадка №1">Выберите площадку</option>
+                    <option value="Площадка №2">Площадка №1</option>
+                    <option value="Площадка №2">Площадка №2</option>
+                    <option value="Площадка №2">Площадка №3</option>
+                    <option value="Площадка №2">Площадка №4</option>
+                </select>
+                <select name="point" id="point" class="form-element-input">
+                    <option value="Площадка №1">Выберите вид</option>
+                    <option value="Площадка №2">Туя</option>
+                    <option value="Площадка №2">Тополь</option>
+                    <option value="Площадка №2">Ель</option>
+                    <option value="Площадка №2">Сосна</option>
+                </select>
+                <select name="point" id="point" class="form-element-input">
+                    <option value="Площадка №1">Нависание над тротуаром</option>
+                    <option value="Площадка №2">Да</option>
+                    <option value="Площадка №2">Нет</option>
+                </select>
+            </form>
+        </div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">Фото</th>
+                <th scope="col">Вид</th>
+                <th scope="col">Площадка</th>
+                <th scope="col">Высота, м</th>
+                <th scope="col">Диаметр ствола, м</th>
+                <th scope="col">Диаметр кроны, м</th>
+                <th scope="col">Сухие ветви</th>
+                <th scope="col">Отслоение коры</th>
+                <th scope="col">Трещины</th>
+                <th scope="col">Потеки сока</th>
+                <th scope="col">Наклон, °</th>
+                <th scope="col">Настройки</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="col">1</td>
+                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                <td scope="col">Туя</td>
+                <td scope="col">Площадка №3</td>
+                <td scope="col">2</td>
+                <td scope="col">0.2</td>
+                <td scope="col">0.6</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col"><a href="#">Подробнее</a></td>
+              <tr>
+                <tr>
+                <td scope="col">2</td>
+                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                <td scope="col">Туя</td>
+                <td scope="col">Площадка №3</td>
+                <td scope="col">2</td>
+                <td scope="col">0.2</td>
+                <td scope="col">0.6</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col"><a href="#">Подробнее</a></td>
+              <tr>
+                <tr>
+                    <td scope="col">3</td>
+                    <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                    <td scope="col">Туя</td>
+                    <td scope="col">Площадка №3</td>
+                    <td scope="col">2</td>
+                    <td scope="col">0.2</td>
+                    <td scope="col">0.6</td>
+                    <td scope="col">нет</td>
+                    <td scope="col">нет</td>
+                    <td scope="col">нет</td>
+                    <td scope="col">нет</td>
+                    <td scope="col">нет</td>
+                    <td scope="col"><a href="#">Подробнее</a></td>
+                  <tr>
+                    <tr>
+                        <td scope="col">4</td>
+                        <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                        <td scope="col">Туя</td>
+                        <td scope="col">Площадка №3</td>
+                        <td scope="col">2</td>
+                        <td scope="col">0.2</td>
+                        <td scope="col">0.6</td>
+                        <td scope="col">нет</td>
+                        <td scope="col">нет</td>
+                        <td scope="col">нет</td>
+                        <td scope="col">нет</td>
+                        <td scope="col">нет</td>
+                        <td scope="col"><a href="#">Подробнее</a></td>
+                      <tr>
+                        <tr>
+                            <td scope="col">5</td>
+                            <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                            <td scope="col">Туя</td>
+                            <td scope="col">Площадка №2</td>
+                            <td scope="col">2</td>
+                            <td scope="col">0.2</td>
+                            <td scope="col">0.6</td>
+                            <td scope="col">нет</td>
+                            <td scope="col">нет</td>
+                            <td scope="col">нет</td>
+                            <td scope="col">нет</td>
+                            <td scope="col">нет</td>
+                            <td scope="col"><a href="#">Подробнее</a></td>
+                          <tr>
+                            <tr>
+                                <td scope="col">6</td>
+                                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                <td scope="col">Туя</td>
+                                <td scope="col">Площадка №2</td>
+                                <td scope="col">2</td>
+                                <td scope="col">0.2</td>
+                                <td scope="col">0.6</td>
+                                <td scope="col">нет</td>
+                                <td scope="col">нет</td>
+                                <td scope="col">нет</td>
+                                <td scope="col">нет</td>
+                                <td scope="col">нет</td>
+                                <td scope="col"><a href="#">Подробнее</a></td>
+                              <tr>
+                                <tr>
+                                    <td scope="col">7</td>
+                                    <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                    <td scope="col">Туя</td>
+                                    <td scope="col">Площадка №1</td>
+                                    <td scope="col">2</td>
+                                    <td scope="col">0.2</td>
+                                    <td scope="col">0.6</td>
+                                    <td scope="col">нет</td>
+                                    <td scope="col">нет</td>
+                                    <td scope="col">нет</td>
+                                    <td scope="col">нет</td>
+                                    <td scope="col">нет</td>
+                                    <td scope="col"><a href="#">Подробнее</a></td>
+                                  <tr>
+                                    <tr>
+                                        <td scope="col">8</td>
+                                        <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                        <td scope="col">Туя</td>
+                                        <td scope="col">Площадка №3</td>
+                                        <td scope="col">2</td>
+                                        <td scope="col">0.2</td>
+                                        <td scope="col">0.6</td>
+                                        <td scope="col">нет</td>
+                                        <td scope="col">нет</td>
+                                        <td scope="col">нет</td>
+                                        <td scope="col">нет</td>
+                                        <td scope="col">нет</td>
+                                        <td scope="col"><a href="#">Подробнее</a></td>
+                                      <tr>
+                                        <tr>
+                                            <td scope="col">9</td>
+                                            <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                            <td scope="col">Туя</td>
+                                            <td scope="col">Площадка №3</td>
+                                            <td scope="col">2</td>
+                                            <td scope="col">0.2</td>
+                                            <td scope="col">0.6</td>
+                                            <td scope="col">нет</td>
+                                            <td scope="col">нет</td>
+                                            <td scope="col">нет</td>
+                                            <td scope="col">нет</td>
+                                            <td scope="col">нет</td>
+                                            <td scope="col"><a href="#">Подробнее</a></td>
+                                          <tr>
+                                            <tr>
+                                                <td scope="col">10</td>
+                                                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                                <td scope="col">Туя</td>
+                                                <td scope="col">Площадка №3</td>
+                                                <td scope="col">2</td>
+                                                <td scope="col">0.2</td>
+                                                <td scope="col">0.6</td>
+                                                <td scope="col">нет</td>
+                                                <td scope="col">нет</td>
+                                                <td scope="col">нет</td>
+                                                <td scope="col">нет</td>
+                                                <td scope="col">нет</td>
+                                                <td scope="col"><a href="#">Подробнее</a></td>
+                                              <tr>
+                                                <tr>
+                                                    <td scope="col">11</td>
+                                                    <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                                    <td scope="col">Туя</td>
+                                                    <td scope="col">Площадка №3</td>
+                                                    <td scope="col">2</td>
+                                                    <td scope="col">0.2</td>
+                                                    <td scope="col">0.6</td>
+                                                    <td scope="col">нет</td>
+                                                    <td scope="col">нет</td>
+                                                    <td scope="col">нет</td>
+                                                    <td scope="col">нет</td>
+                                                    <td scope="col">нет</td>
+                                                    <td scope="col"><a href="#">Подробнее</a></td>
+                                                  <tr>
+                                                    <tr>
+                                                        <td scope="col">12</td>
+                                                        <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                                        <td scope="col">Туя</td>
+                                                        <td scope="col">Площадка №3</td>
+                                                        <td scope="col">2</td>
+                                                        <td scope="col">0.2</td>
+                                                        <td scope="col">0.6</td>
+                                                        <td scope="col">нет</td>
+                                                        <td scope="col">нет</td>
+                                                        <td scope="col">нет</td>
+                                                        <td scope="col">нет</td>
+                                                        <td scope="col">нет</td>
+                                                        <td scope="col"><a href="#">Подробнее</a></td>
+                                                      <tr>
+                                                        <tr>
+                                                            <td scope="col">13</td>
+                                                            <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                                            <td scope="col">Туя</td>
+                                                            <td scope="col">Площадка №3</td>
+                                                            <td scope="col">2</td>
+                                                            <td scope="col">0.2</td>
+                                                            <td scope="col">0.6</td>
+                                                            <td scope="col">нет</td>
+                                                            <td scope="col">нет</td>
+                                                            <td scope="col">нет</td>
+                                                            <td scope="col">нет</td>
+                                                            <td scope="col">нет</td>
+                                                            <td scope="col"><a href="#">Подробнее</a></td>
+                                                          <tr>
+                                                            <tr>
+                                                                <td scope="col">14</td>
+                                                                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                                                <td scope="col">Туя</td>
+                                                                <td scope="col">Площадка №3</td>
+                                                                <td scope="col">2</td>
+                                                                <td scope="col">0.2</td>
+                                                                <td scope="col">0.6</td>
+                                                                <td scope="col">нет</td>
+                                                                <td scope="col">нет</td>
+                                                                <td scope="col">нет</td>
+                                                                <td scope="col">нет</td>
+                                                                <td scope="col">нет</td>
+                                                                <td scope="col"><a href="#">Подробнее</a></td>
+                                                              <tr>
+                                                                <tr>
+                                                                    <td >15</td>
+                                                                    <td ><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                                                                    <td >Туя</td>
+                                                                    <td >Площадка №3</td>
+                                                                    <td>2</td>
+                                                                    <td >0.2</td>
+                                                                    <td >0.6</td>
+                                                                    <td >нет</td>
+                                                                    <td >нет</td>
+                                                                    <td>нет</td>
+                                                                    <td>нет</td>
+                                                                    <td >нет</td>
+                                                                    <td><a href="#">Подробнее</a></td>
+                                                                  <tr>
+            </tbody>
+          </table>
+        </div>
+      <!--   <div class="popupTree" class="hiddenTree">
+            <div class="login-form">
+                <h3 class="login-form-title">1.1 Туя</h3>
+                <form action="../admin/index.html">
+        
+                <div class="form-element">
+                    <input class="form-element-input" type="text" name="login" id="login" placeholder="Координаты">
+                </div>
+                <div class="form-element">
+                    <input class="form-element-input" type="password" name="pass" id="pass" placeholder="Введите ваш пароль">
+                </div>
+                <div class="form-element">
+                    <input type="submit" value="Войти" class="button_filters">
+                </div>
+               
+            </form>
+            <div class="login-form-footer">У меня  нет пароля. <a href="#">Запросить пароль</a></div>
+        
+        </div>
+        </div> -->
+    </section>
+
+
+
+
+    </main>
+   
+    <div class="wrap">
+        <div id="footer">
+            <ul class="footer__content">
+                <li class="footer__content-item">Разработано <a class="link-accent" href="https://inpit.sstu.ru">ИНПИТ</a></li>
+                <li class="footer__content-item">СГТУ им. Гагарина Ю.А.</li>
+                <li class="footer__content-item">2022</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
