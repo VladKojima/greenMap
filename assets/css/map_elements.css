@@ -144,6 +144,20 @@ h5.h_filters{
     margin-left: 16px;
 }
 
+.number1_filters{
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-left: 3px;
+    width: 150px;
+}
+
+.number2_filters{
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-left: 3px;
+    width: 150px;
+}
+
 .text_filters{
     color: rgba(0, 0, 0, 0.54);
     padding-left: 16px;
@@ -158,7 +172,14 @@ h5.h_filters{
     width: 41px;
 }
 
-.button_filters{
+.textInput_filters{
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+    padding-left: 12px;
+    width: 120px;
+}
+
+.buttonSend_filters{
     margin-top: 20px;
     padding:10px 30px;
     background-color: var(--red);
@@ -166,6 +187,30 @@ h5.h_filters{
     font-size: 0.8rem;
     text-align: center;
     border-color: var(--red);
+    border-radius: 2px;
+    text-transform: uppercase;
+    border:none;
+    outline:none;
+}
+
+.buttonSend_filters:hover {
+    color: white;
+    background-color: #a7000b;
+}
+
+.buttonClear_filters:hover {
+    color: white;
+    background-color: #00448d;
+}
+
+.buttonClear_filters{
+    margin-top: 20px;
+    padding:10px 30px;
+    background-color: var(--blue);
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    text-align: center;
+    border-color: var(--blue);
     border-radius: 2px;
     text-transform: uppercase;
     border:none;

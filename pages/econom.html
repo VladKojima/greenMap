@@ -35,12 +35,12 @@
                 <li class="header__content-item"><h1 class="header__title"><a href="../index.html">ИС по учёту зеленых насаждений СГТУ им. Гагарина Ю.А.</a></h1></li>
                 <li class="header__content-item"><a href="login.html"><img class="img-fluid header__content__img"  src="../assets/images/icons/login.svg"></a></li>
             </ul>
-
+            
         </div>
     </div>
 
     <div class="flex_container">
-
+      
         <div class="for_back container">
            <!--  <a class="back_btn" href="../index.html">Назад</a> -->
             <h4 class="container cluster">СЭИ</h4>
@@ -73,7 +73,7 @@
                     <form action="#">
                     <div class="filters" id = "ttypes">
                         <h5 class="h_filters">Вид</h5>
-
+                        
 
                         <input type='checkbox' id='protot' checked=true class="check_filters"/>
                         <label for="protot" class="text_filters"></label>
@@ -90,26 +90,6 @@
                         <input type='checkbox' id='econom' class="check_filters"/>
                         <label for="econom" class="text_filters">СЭИ</label><br>
                     </div>
-                    <!-- <div>
-                        <h5>Сухие ветки</h5>
-                        <input type='radio' id='dryBranches1' name="DryBranches" value="1">Да</input><br>
-                        <input type='radio' id='dryBranches2' name="DryBranches" value="0" checked=true>Нет</input><br>
-                    </div>
-                    <div>
-                        <h5>Отслоение коры</h5>
-                        <input type='radio' id='bark1' name="Bark" value="1">Да</input><br>
-                        <input type='radio' id='bark2' name="Bark" value="0" checked=true>Нет</input><br>
-                    </div>
-                    <div>
-                        <h5>Трещины</h5>
-                        <input type='radio' id='cracks1' name="Cracks" value="1">Да</input><br>
-                        <input type='radio' id='cracks2' name="Cracks" value="0" checked=true>Нет</input><br>
-                    </div>
-                    <div>
-                        <h5>Потеки сока</h5>
-                        <input type='radio' id='juice1' name="Juice" value="1">Да</input><br>
-                        <input type='radio' id='juice2' name="Juice" value="0" checked=true>Нет</input><br>
-                    </div> -->
                     <div class="filters">
                         <h5 class="h_filters">Нависание над проводами</h5>
                         <input type='radio' id='wires1' name="Wires" value="1" class="radio1_filters"/>
@@ -128,25 +108,85 @@
                         <h5 class="h_filters">Нависание над дорогой</h5>
                         <input type='radio' id='road1' name="Road" value="1" class="radio1_filters"/>
                         <label for="road1" class="text1_filters">Да</label>
-                        <input type='radio' id='road2' name="Road" name="Sidewalk" value="0" checked=true class="radio2_filters"/>
+                        <input type='radio' id='road2' name="Road" value="0" checked=true class="radio2_filters"/>
                         <label for="road2" class="text1_filters">Нет</label><br>
                     </div>
+
+                    
                     <div class="filters">
-                        <input type="button" name="send" value="Применить" class="button_filters" onclick="app()"></input>
-                        <input type="reset" name="clear" value="Очистить" class="button_filters accent-color" ></input>
+                        <h5 class="h_filters">Сухие ветки</h5>
+                        <input type='radio' id='dryBranches1' name="DryBranches" value="1" class="radio1_filters"/>
+                        <label for="dryBranches1" class="text1_filters">Да</label>
+                        <input type='radio' id='dryBranches2' name="DryBranches" value="0" checked=true class="radio2_filters"/>
+                        <label for="dryBranches2" class="text1_filters">Нет</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Отслоение коры</h5>
+                        <input type='radio' id='bark1' name="Bark" value="1" class="radio1_filters"/>
+                        <label for="bark1" class="text1_filters">Да</label>
+                        <input type='radio' id='bark2' name="Bark" value="0" checked=true class="radio2_filters"/>
+                        <label for="bark2" class="text1_filters">Нет</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Трещины</h5>
+                        <input type='radio' id='cracks1' name="Cracks" value="1" class="radio1_filters"/>
+                        <label for="cracks1" class="text1_filters">Да</label>
+                        <input type='radio' id='cracks2' name="Cracks" value="0" checked=true class="radio2_filters"/>
+                        <label for="cracks2" class="text1_filters">Нет</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Потеки сока</h5>
+                        <input type='radio' id='juice1' name="Juice" value="1" class="radio1_filters"/>
+                        <label for="juice1" class="text1_filters">Да</label>
+                        <input type='radio' id='juice2' name="Juice" value="0" checked=true class="radio2_filters"/>
+                        <label for="juice2" class="text1_filters">Нет</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Номер дерева</h5>
+                        <input type='number' id='idNumber1' name="IdNumber"  min="0" class="number1_filters"/>
+                        <label for="idNumber1" class="textInput_filters">ID</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Высота</h5>
+                        <input type='number' id='heightNumber1' name="HeightNumber"  min="0" class="number1_filters"/>
+                        <label for="heightNumber1" class="textInput_filters">метр</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Диаметр ствола</h5>
+                        <input type='number' id='tDiameterNumber1' name="TDiameterNumber"  min="0" class="number1_filters"/>
+                        <label for="tDiameterNumber1" class="textInput_filters">метр</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Диаметр кроны</h5>
+                        <input type='number' id='cDiameterNumber1' name="CDiameterNumber"  min="0" class="number1_filters"/>
+                        <label for="cDiameterNumber1" class="textInput_filters">метр</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Наклон</h5>
+                        <input type='number' id='tiltNumber1' name="TiltNumber"  min="0" class="number1_filters"/>
+                        <label for="tiltNumber1" class="textInput_filters">градус</label><br>
+                    </div>
+                    <div class="filters">
+                        <h5 class="h_filters">Координаты</h5>
+                        <input type='number' id='coordinatesNumber1' name="CoordinatesNumber"  min="0" class="number1_filters"/>
+                        <label for="coordinatesNumber1" class="textInput_filters">Координата 1</label><br>
+                        <input type='number' id='coordinatesNumber2' name="CoordinatesNumber"  min="0" class="number2_filters"/>
+                        <label for="coordinatesNumber2" class="textInput_filters">Координата 2</label><br>
+                    </div>
+                    <div class="filters">
+                        <input type="button" name="send" value="Применить" class="buttonSend_filters" onclick="app()"></input>
+                        <input type="button" name="clear" value="Очистить" class="buttonClear_filters" onclick="clearMap()"></input>
                     </div>
                 </form>
-
-                <div id="treeEdit" class="filters">
-                  <h3 class="h_filters">Редактирование меток</h3>
-                  <input type="button" id="dragButton" class="button_filters" value="Редактировать">
-                  <input type="button" id="resetButton" class="button_filters accent-color" style="display:none" value="Сбросить">
-                </div>
-
                 </div>
               <!--   <div class="left_but">
                     <input type="submit" name="send" value="Меню" class="left_but button_hidden" onclick="hideFilter()"></input>
                 </div> -->
+
+                <input type="button" id="dragButton" value="Редактировать">
+                <input type="button" id="resetButton" style="display:none" value="Сбросить">
+
+
 
                 <div class="card">
                     <div class="top">
@@ -160,7 +200,7 @@
                                 <span class="coordinates">51.456 , 46.456</span>
                             </div>
                             <div class="place">
-                                Площадка №3 СЭИ
+                                Площадка №3 СЭИ 
                             </div>
                         </div>
                         <img class="close" onclick="close_card()" src="../assets/images/closecircle.png" alt="">
