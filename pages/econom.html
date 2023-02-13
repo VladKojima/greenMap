@@ -43,6 +43,7 @@
 
         <div class="for_back container">
            <!--  <a class="back_btn" href="../index.html">Назад</a> -->
+           <input type="button" class="buttonClear_filters" id="dragButton" value="Редактировать">
             <h4 class="container cluster">СЭИ</h4>
         </div>
 
@@ -67,6 +68,16 @@
                 </div>
 
                 <div id="menufilters" class="left_nav nav_map">
+                  <div id="treeEdit" class="filters">
+                    <h3 class="h_filters" id="dragLabel" hidden>Редактирование меток</h3>
+                    <input type="button" id="saveButton" class="buttonSend_filters" hidden value="Сохранить">
+                    <input type="button" id="resetButton" class="buttonSend_filters" hidden value="Сбросить">
+                  </div>
+                  <div class="filters">
+                      <h5 class="h_filters">Поиск дерева по номеру</h5>
+                      <input type='number' id='idNumber1' name="IdNumber"  min="1" class="number1_filters"/>
+                      <input type="button" name="idSearch" value="Найти"><br>
+                  </div>
                     <div class="filters">
                         <h3 class="h_filters">Фильтры</h3>
                     </div>
@@ -141,11 +152,7 @@
                         <input type='radio' id='juice2' name="Juice" value="0" checked=true class="radio2_filters"/>
                         <label for="juice2" class="text1_filters">Нет</label><br>
                     </div>
-                    <div class="filters">
-                        <h5 class="h_filters">Номер дерева</h5>
-                        <input type='number' id='idNumber1' name="IdNumber"  min="0" class="number1_filters"/>
-                        <label for="idNumber1" class="textInput_filters">ID</label><br>
-                    </div>
+
                     <div class="filters">
                         <h5 class="h_filters">Высота</h5>
                         <input type='number' id='heightNumber1' name="HeightNumber"  min="0" class="number1_filters"/>
@@ -179,13 +186,8 @@
                     </div>
                 </form>
 
-                <div id="treeEdit" class="filters">
-                  <h3 class="h_filters">Редактирование меток</h3>
-                  <input type="button" id="dragButton" class="buttonSend_filters" value="Редактировать">
-                  <input type="button" id="resetButton" class="buttonClear_filters" style="display:none" value="Сбросить">
                 </div>
-
-                </div>
+                <img src="../assets/images/Redacting.svg" id="editIndicator" hidden alt="">
               <!--   <div class="left_but">
                     <input type="submit" name="send" value="Меню" class="left_but button_hidden" onclick="hideFilter()"></input>
                 </div> -->
@@ -278,6 +280,8 @@
             </ul>
         </div>
     </div>
+    <img src="../assets/images/saved.svg" id='savedImg' alt="">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <script src="../assets/js/data.js"></script>

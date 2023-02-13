@@ -122,7 +122,7 @@ h5.h_filters{
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    
+
     color: #000000;
     margin:1rem 0;
 }
@@ -238,3 +238,50 @@ h5.h_filters{
     text-align: center;
 }
 
+#dragButton{
+  margin: 0;
+  position: absolute;
+  left: 48px;
+  width: 330px;
+
+}
+
+#saveButton{
+  background: linear-gradient(45deg, #159322, #56bd61);
+}
+
+#saveButton, #resetButton, #dragButton{
+  padding: 10px 42px;
+}
+
+#savedImg{
+  position: fixed;
+  top: 37vh;
+  left: calc(50vw - 12vh);
+  height: 25vh;
+  z-index: 999;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  opacity: 0;
+}
+
+@keyframes save {
+  from{
+    opacity: 0;
+  }
+  50%{
+    opacity: 100%;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+#editIndicator{
+  position: absolute;
+  z-index: 1;
+  left: 25vw;
+  width: 50vw;
+  pointer-events: none;
+}

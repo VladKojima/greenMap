@@ -6,7 +6,7 @@ function setDefImg(elem)
 
 const m = new Map();
 m.set(1, [51.529752, 45.977860]);
-m.set(2, [51.531465, 45.980210]);
+m.set(2, [51.529491, 45.982059]);
 m.set(3, [51.529483, 45.982046]);
 m.set(4, [51.540273,46.039105]);
 
@@ -99,12 +99,15 @@ function init(){
 
 }
 let datas;
-function app(){
-    dragReset();
-    dragSave();
+function app(searchId){
     clusterer.removeAll();
 
     datas = data.filter(function(elm){
+      if(searchId)
+      {
+        if(searchId==elm['id']) return true;
+        return false;
+      }
         let fl=false;
         if (document.getElementById('studTown').checked && elm['location']==1) {
             fl = true;
@@ -158,11 +161,6 @@ function app(){
         else{
             return false;
         }
-        if (elm['id']==(''+document.getElementById('idNumber1').value));
-        else if (document.getElementById('idNumber1').value=='');
-        else{
-            return false;
-        }
         if (elm['height']==(''+document.getElementById('heightNumber1').value));
         else if (document.getElementById('heightNumber1').value=='');
         else{
@@ -190,6 +188,11 @@ function app(){
         }
         return fl;
     });
+    // при неудачном поиске
+    if(datas.length==0&&searchId)
+    {
+      return app();
+    }
 
     array = [];
 
@@ -236,6 +239,9 @@ function app(){
     if(econom.checked) item.push(4);
     if(item.length>0)
     localStorage.setItem('location',JSON.stringify(item));
+
+    if(dragMode) dragOn();
+    dragReset();
 }
 let fhide=true;
 function hideFilter(){
@@ -272,23 +278,54 @@ function clearMap(){
 }
 
 const drags = new Map();
+let dragMode = false;
+
+function dragOn()
+{
+  array.forEach(item => item.options.set('draggable', true));
+}
+
+function dragOff()
+{
+  array.forEach(item => item.options.set('draggable', false));
+}
 
 function dragReset()
 {
   for(let item of drags.entries())
   {
     item[0].geometry.setCoordinates(item[1]['coordinates']);
+    clusterer.remove(item[0]);
+    clusterer.add(item[0]);
   }
+
+  drags.clear();
 }
 
 function dragStart()
 {
-  array.forEach(item => item.options.set('draggable', true));
+  dragOn();
+  dragMode = true;
+  dragButton.onclick = ()=>{
+    dragOff();
+    dragReset();
+    dragButton.onclick = dragStart;
+    dragButton.value = "Редактировать";
 
-  dragButton.onclick = dragSave;
-  dragButton.value = "Сохранить";
+    dragLabel.hidden = true;
+    resetButton.hidden = true;
+    saveButton.hidden = true;
+    editIndicator.hidden = true;
 
-  resetButton.style.display = null;
+    dragMode = false;
+  };
+  dragButton.value = "Завершить редактирование";
+
+  dragLabel.hidden = false;
+  resetButton.hidden = false;
+  saveButton.hidden = false;
+  editIndicator.hidden = false;
+
 }
 
 function  dragSave()
@@ -302,14 +339,23 @@ function  dragSave()
 
   drags.clear();
 
-  array.forEach(item => item.options.set('draggable', false));
+  savedImg.style.animationName = null;
+  setTimeout(()=>savedImg.style.animationName = 'save');
 
-  dragButton.onclick = dragStart;
-  dragButton.value = "Редактировать";
-
-  resetButton.style.display = "none";
 }
 
 dragButton.onclick=dragStart;
 
+saveButton.onclick=dragSave;
+
 resetButton.onclick=dragReset;
+
+document.getElementsByName('idSearch')[0].onclick=()=>{
+  if(!idNumber1.value) return;
+  app(idNumber1.value);
+}
+
+window.onbeforeunload = function() {
+  if(drags.size>0) return false;
+  return;
+};

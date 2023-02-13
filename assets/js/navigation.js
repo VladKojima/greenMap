@@ -22,7 +22,7 @@ function open_card(index) {
     card.querySelector('[class="content cora"]').innerHTML = datas[index]['detachment']?'да':'нет';
     card.querySelector('[class="content crack"]').innerHTML = datas[index]['cracks']?'да':'нет';
     card.querySelector('[class="content juice"]').innerHTML = datas[index]['drips']?'да':'нет';
-    card.querySelector('[class="content incline"]').innerHTML = datas[index]['tilt']?'да':'нет';
+    card.querySelector('[class="content incline"]').innerHTML = datas[index]['tilt'];
     card.querySelector('[class="content sidewalk"]').innerHTML = datas[index]['overhanging_t']?'да':'нет';
     card.querySelector('[class="content cabels"]').innerHTML = datas[index]['overhanging_p']?'да':'нет'
     card.querySelector('[class="content cabels_comments"]').innerHTML = datas[index]['overhanging_comment'];
