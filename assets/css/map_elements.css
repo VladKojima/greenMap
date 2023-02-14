@@ -281,7 +281,6 @@ h5.h_filters{
 #editIndicator{
   position: absolute;
   z-index: 1;
-  left: 25vw;
-  width: 50vw;
+  width: 100%;
   pointer-events: none;
 }
