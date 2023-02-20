@@ -14,25 +14,6 @@ const types = new Set();
 
 let balloon = document.getElementsByClassName('balloon')[0];
 
-data.forEach((item) => {
-  types.add(item['name']);
-});
-
-let it = 0;
-types.forEach((item) => {
-  let elem = protot.cloneNode();
-  let label = protot.labels[0].cloneNode();
-  elem.id = 'types'+it++;
-  elem.checked = true;
-  label.textContent = item;
-  label.setAttribute('for',elem.id);
-  protot.parentElement.append(elem);
-  protot.parentElement.append(label);
-  protot.parentElement.append(document.createElement('br'));
-});
-protot.labels[0].remove();
-protot.remove();
-
 if(!localStorage.getItem('location'))
 {
   let item = [1];
@@ -62,7 +43,29 @@ localStorage.setItem('t','0');
 localStorage.setItem('d','0');
 
 ymaps.ready(init);
-function init(){
+
+async function init(){
+
+  await loadData();
+
+  data.forEach((item) => {
+    types.add(item['name']);
+  });
+
+  let it = 0;
+  types.forEach((item) => {
+    let elem = protot.cloneNode();
+    let label = protot.labels[0].cloneNode();
+    elem.id = 'types'+it++;
+    elem.checked = true;
+    label.textContent = item;
+    label.setAttribute('for',elem.id);
+    protot.parentElement.append(elem);
+    protot.parentElement.append(label);
+    protot.parentElement.append(document.createElement('br'));
+  });
+  protot.labels[0].remove();
+  protot.remove();
 
     // Создание карты.
     myMap = new ymaps.Map("map_sstucity", {
@@ -98,7 +101,9 @@ function init(){
 
 
 }
+
 let datas;
+
 function app(searchId){
     clusterer.removeAll();
 
