@@ -37,11 +37,6 @@ JSON.parse(localStorage.getItem('location')).forEach((item) => {
   }
 });
 
-
-localStorage.setItem('p','0');
-localStorage.setItem('t','0');
-localStorage.setItem('d','0');
-
 ymaps.ready(init);
 
 async function init(){
@@ -83,9 +78,42 @@ async function init(){
     // Создаём макет содержимого.
     MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
         '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-    ),
+    )
 
     array = [];
+
+    for (let i = 0; i < data.length; i++) {
+        let elem = balloon.cloneNode(true);
+        let img =elem.querySelector('img');
+        img.src="../assets/images/"+data[i]["photo"];
+        img.setAttribute("onerror", "setDefImg(this)")
+        elem.querySelector('span').textContent=data[i]['name'];
+        elem.querySelector('a').setAttribute('onclick', 'open_card('+i+')')
+        elem.style.display = null
+        array[i] = new ymaps.Placemark(data[i]['coordinates'], {
+            hintContent: data[i]['name'],
+            balloonContent: elem.outerHTML,
+            clusterCaption: '<strong>' + data[i]['id']+' '+data[i]['name'] + '</strong>'
+
+        }, {
+            iconLayout: 'default#imageWithContent',
+            iconImageHref: '../assets/images/'+data[i]['icon'],
+            iconImageSize: [28, 28],
+            iconImageOffset: [-24, -24],
+            iconContentLayout: MyIconContentLayout,
+        });
+
+        array[i].data = data[i];
+
+        array[i].events.add('beforedragstart', (event)=>{
+          drags.add(array[i]);
+        })
+
+        array[i].events.add('dragend', (event)=>{
+          clusterer.remove(array[i]);
+          clusterer.add(array[i]);
+        })
+    }
 
     myMap.controls.remove('rulerControl');
     myMap.controls.remove('searchControl');
@@ -102,12 +130,10 @@ async function init(){
 
 }
 
-let datas;
-
 function app(searchId){
     clusterer.removeAll();
 
-    datas = data.filter(function(elm){
+    let datas = array.filter(function(elm){elm = elm.data;
       if(searchId)
       {
         if(searchId==elm['id']) return true;
@@ -199,43 +225,7 @@ function app(searchId){
       return app();
     }
 
-    array = [];
-
-    for (let i = 0; i < datas.length; i++) {
-        let elem = balloon.cloneNode(true);
-        let img =elem.querySelector('img');
-        img.src="../assets/images/"+datas[i]["photo"];
-        img.setAttribute("onerror", "setDefImg(this)")
-        elem.querySelector('span').textContent=datas[i]['name'];
-        elem.querySelector('a').setAttribute('onclick', 'open_card('+i+')')
-        elem.style.display = null
-        array[i] = new ymaps.Placemark(datas[i]['coordinates'], {
-            hintContent: datas[i]['name'],
-            balloonContent: elem.outerHTML,
-            clusterCaption: '<strong>' + datas[i]['id']+' '+datas[i]['name'] + '</strong>'
-
-        }, {
-            iconLayout: 'default#imageWithContent',
-            iconImageHref: '../assets/images/'+datas[i]['icon'],
-            iconImageSize: [28, 28],
-            iconImageOffset: [-24, -24],
-            iconContentLayout: MyIconContentLayout,
-        });
-
-        array[i].events.add('beforedragstart', (event)=>{
-          if(!drags.has(array[i]))
-          {
-            drags.set(array[i], datas[i]);
-          }
-
-        })
-        array[i].events.add('dragend', (event)=>{
-          clusterer.remove(array[i]);
-          clusterer.add(array[i]);
-        })
-    }
-
-    clusterer.add(array);
+    clusterer.add(datas);
 
     let item = [];
     if(studTown.checked) item.push(1);
@@ -282,7 +272,7 @@ function clearMap(){
   document.getElementById('coordinatesNumber2').value='';
 }
 
-const drags = new Map();
+const drags = new Set();
 let dragMode = false;
 
 function dragOn()
@@ -297,11 +287,11 @@ function dragOff()
 
 function dragReset()
 {
-  for(let item of drags.entries())
+  for(let item of drags)
   {
-    item[0].geometry.setCoordinates(item[1]['coordinates']);
-    clusterer.remove(item[0]);
-    clusterer.add(item[0]);
+    item.geometry.setCoordinates(item.data['coordinates']);
+    clusterer.remove(item);
+    clusterer.add(item);
   }
 
   drags.clear();
@@ -335,11 +325,11 @@ function dragStart()
 
 function  dragSave()
 {
-  for(let item of drags.entries())
+  for(let item of drags)
   {
     // сохранение координат на сервере
 
-    item[1]['coordinates']=item[0].geometry.getCoordinates();
+    item.data['coordinates']=item.geometry.getCoordinates();
   }
 
   drags.clear();
