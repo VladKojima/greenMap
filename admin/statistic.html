@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Статистика</title>
+    <script src="../assets/js/data.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/diagram.css">
+
+  </head>
+  <body>
+
+
+
+
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/media.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/diagram.css">
+    <script src="../assets/js/index.js">
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="wrap">
+            <div id="header">
+                <ul class="header__content">
+                    <li class="header__content-item"><img class="img-fluid header__content__img"  src="../assets/images/icons/home.svg"></li>
+                    <li class="header__content-item "><a class="admin-nav active" href="index.html">Площадки</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="trees.html">Насаждения</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="users.html">Пользователи</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="#">Статистика</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="#">Настройки</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="../index.html"><img class="img-fluid header__content__img"  src="../assets/images/icons/login.svg"></a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="page-content">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-5">
+            <div class="col">
+              <div class="card radius-10 bg-info" onclick="setLocation([1, 2, 3, 4])">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <h4 class="my-1 text-white">Все площадки</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  						<div class="col">
+  							<div class="card radius-10 bg-primary" onclick="setLocation([1])">
+  								<div class="card-body">
+  									<div class="d-flex align-items-center">
+  										<div>
+  											<h4 class="my-1 text-white">Корпуса СГТУ им. Гагарина Ю.А.</h4>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  						<div class="col">
+  							<div class="card radius-10 bg-success" onclick="setLocation([2])">
+  								<div class="card-body">
+  									<div class="d-flex align-items-center">
+  										<div>
+  											<h4 class="my-1 text-white">Приемная комиссия СГТУ им. Гагарина Ю.А.</h4>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  						<div class="col">
+  							<div class="card radius-10 bg-danger" onclick="setLocation([3])">
+  								<div class="card-body">
+  									<div class="d-flex align-items-center">
+  										<div>
+  											<h4 class="text-white my-1">Общежитие СЭИ</h4>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  						<div class="col">
+  							<div class="card radius-10 bg-dark" onclick="setLocation([4])">
+  								<div class="card-body">
+  									<div class="d-flex align-items-center">
+  										<div>
+  											<h4 class="my-1 text-white">СЭИ</h4>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+
+          <div class="row">
+            <div class="col-12 col-lg-8 col-xl-8 d-flex">
+					   <div class="card radius-10 w-10">
+						<div class="card-header">
+							<h5 class="mb-0">Тип дерева</h5>
+						</div>
+						  <div class="card-body">
+						    <div class="diagram">
+							   <canvas></canvas>
+						    </div>
+						  </div>
+					   </div>
+					  </div>
+
+            <div class="col-12 col-lg-8 col-xl-8 d-flex">
+					   <div class="card radius-10 w-10">
+						<div class="card-header">
+							<h5 class="mb-0">Опиловка</h5>
+						</div>
+						  <div class="card-body">
+						    <div class="diagram">
+							   <canvas></canvas>
+						    </div>
+						  </div>
+					   </div>
+					  </div>
+
+          </div>
+
+        </div>
+
+
+    </main>
+
+    <div class="wrap">
+        <div id="footer">
+            <ul class="footer__content">
+                <li class="footer__content-item">Разработано <a class="link-accent" href="https://inpit.sstu.ru">ИНПИТ</a></li>
+                <li class="footer__content-item">СГТУ им. Гагарина Ю.А.</li>
+                <li class="footer__content-item">2022</li>
+            </ul>
+        </div>
+    </div>
+    <script src="../assets/js/charts.js"></script>
+</body>
+
+</html>
