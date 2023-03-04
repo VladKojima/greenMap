@@ -5,6 +5,13 @@ let chs = [];
 {
   await loadData();
 
+
+  // тестовые данные для диаграммы возраста
+  data.forEach((item) => {
+    item['age'] = Math.ceil(Math.random()*20+10);
+  });
+
+
   filtered = data.map(item=>item);
 
   ddraw()
@@ -13,6 +20,8 @@ let chs = [];
 
 function ddraw()
 {
+  treeCount.textContent = filtered.length;
+
   chs.length = 0;
   {
     let types = new Map();
@@ -39,7 +48,7 @@ function ddraw()
 
     loader();
 
-    let chart = new Chart(dgs[0],{
+    let chart = new Chart(dgs[1],{
       type: 'doughnut',
       data: {
         datasets:[{
@@ -91,8 +100,6 @@ function ddraw()
     chs.push(chart);
   }
 
-  ctx = dgs[1];
-
   {
     let opil = [0,0];
 
@@ -103,13 +110,39 @@ function ddraw()
     });
 
     let chart =
-    new Chart(ctx,{
+    new Chart(dgs[2],{
       type: 'doughnut',
       data: {
         datasets:[{
           data: opil
         }],
         labels: ['Не подлежит опиловке', 'Подлежит опиловке']
+      }
+    });
+    chs.push(chart);
+  }
+
+  {
+     ages = new Map();
+
+    filtered.forEach((item) => {
+      let age = item['age'];
+      if(ages.has(age))
+        ages.set(age, ages.get(age)+1);
+      else ages.set(age,1);
+    });
+
+    let arr = Array.from(ages.keys()).sort((a,b)=>a-b);
+
+    let chart =
+    new Chart(dgs[0],{
+      type: 'line',
+      data:{
+        labels: arr,
+        datasets: [{
+          label: '',
+          data: arr.map(item=>ages.get(item))
+        }]
       }
     });
     chs.push(chart);
