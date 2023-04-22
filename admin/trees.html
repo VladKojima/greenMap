@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/media.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../assets/js/index.js">
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="../assets/js/index.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,7 +23,7 @@
                     <li class="header__content-item "><a class="admin-nav " href="index.html">Площадки</a></li>
                     <li class="header__content-item "><a class="admin-nav active" href="trees.html">Насаждения</a></li>
                     <li class="header__content-item "><a class="admin-nav " href="users.html">Пользователи</a></li>
-                    <li class="header__content-item "><a class="admin-nav" href="statistic.html">Статистика</a></li>
+                    <li class="header__content-item "><a class="admin-nav" href="statistic2.html">Статистика</a></li>
                     <li class="header__content-item "><a class="admin-nav" href="#">Настройки</a></li>
                     <li class="header__content-item "><a class="admin-nav" href="../index.html"><img class="img-fluid header__content__img"  src="../assets/images/icons/login.svg"></a></li>
                 </ul>
@@ -49,25 +51,40 @@
         <div class="filter___block">
             <form action="" class="form-filter">
                 <select name="point" id="point" class="form-element-input">
-                    <option value="Площадка №1">Выберите площадку</option>
-                    <option value="Площадка №2">Площадка №1</option>
+                    <option value="Площадка">Выберите площадку</option>
+                    <option value="Площадка №1">Площадка №1</option>
                     <option value="Площадка №2">Площадка №2</option>
-                    <option value="Площадка №2">Площадка №3</option>
-                    <option value="Площадка №2">Площадка №4</option>
+                    <option value="Площадка №3">Площадка №3</option>
+                    <option value="Площадка №4">Площадка №4</option>
                 </select>
                 <select name="point" id="point" class="form-element-input">
-                    <option value="Площадка №1">Выберите вид</option>
-                    <option value="Площадка №2">Туя</option>
-                    <option value="Площадка №2">Тополь</option>
-                    <option value="Площадка №2">Ель</option>
-                    <option value="Площадка №2">Сосна</option>
+                    <option value="Вид">Выберите вид</option>
+                    <option value="Туя">Туя</option>
+                    <option value="Тополь">Тополь</option>
+                    <option value="Ель">Ель</option>
+                    <option value="Сосна">Сосна</option>
                 </select>
                 <select name="point" id="point" class="form-element-input">
-                    <option value="Площадка №1">Нависание над тротуаром</option>
-                    <option value="Площадка №2">Да</option>
-                    <option value="Площадка №2">Нет</option>
+                    <option value="Нависание над тротуаром">Нависание над тротуаром</option>
+                    <option value="Да">Да</option>
+                    <option value="Нет">Нет</option>
                 </select>
+                <select name="point" id="point" class="form-element-input">
+                  <option value="Нависание над проводами">Нависание над проводами</option>
+                  <option value="Да">Да</option>
+                  <option value="Нет">Нет</option>
+              </select>
+              <select name="point" id="point" class="form-element-input">
+                <option value="Нависание над дорогой">Нависание над дорогой</option>
+                <option value="Да">Да</option>
+                <option value="Нет">Нет</option>
+            </select>
             </form>
+            <div class="forAddBtn">
+              <button type="button" class="btn btn-primary addBtn" data-bs-toggle="modal" data-bs-target="#addModal">
+                Добавить дерево
+              </button>
+            </div>
         </div>
         <table class="table table-striped">
             <thead>
@@ -84,15 +101,19 @@
                 <th scope="col">Трещины</th>
                 <th scope="col">Потеки сока</th>
                 <th scope="col">Наклон, °</th>
-                <th scope="col">Настройки</th>
+                <th scope="col">Нависание над тротуаром</th>
+                <th scope="col">Нависание над проводами</th>
+                <th scope="col">Нависание над дорогой</th>
+                <th scope="col">Координаты</th>
+                <th scope="col">Редактировать</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td scope="col">1</td>
-                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
+                <td scope="col"><a data-bs-toggle="modal" data-bs-target="#photoModal" href="#"><img src="../assets/images/1_6_tuya.jpg" class="img-fluid table_img"></a></td>
                 <td scope="col">Туя</td>
-                <td scope="col">Площадка №3</td>
+                <td scope="col">Площадка №4</td>
                 <td scope="col">2</td>
                 <td scope="col">0.2</td>
                 <td scope="col">0.6</td>
@@ -100,222 +121,385 @@
                 <td scope="col">нет</td>
                 <td scope="col">нет</td>
                 <td scope="col">нет</td>
+                <td scope="col">0</td>
                 <td scope="col">нет</td>
-                <td scope="col"><a href="#">Подробнее</a></td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">51.540273, 46.039105</td>
+                <td scope="col"><a data-bs-toggle="modal" data-bs-target="#editModal" href="#"><img class="img_edit" src="../assets/images/edit.png" alt="edit"></a></td>
               <tr>
+
                 <tr>
-                <td scope="col">2</td>
-                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                <td scope="col">Туя</td>
-                <td scope="col">Площадка №3</td>
-                <td scope="col">2</td>
-                <td scope="col">0.2</td>
-                <td scope="col">0.6</td>
-                <td scope="col">нет</td>
-                <td scope="col">нет</td>
-                <td scope="col">нет</td>
-                <td scope="col">нет</td>
-                <td scope="col">нет</td>
-                <td scope="col"><a href="#">Подробнее</a></td>
-              <tr>
+                  <td scope="col">2</td>
+                  <td scope="col"><a data-bs-toggle="modal" data-bs-target="#photoModal" href="#"><img src="../assets/images/1_6_tuya.jpg" class="img-fluid table_img"></a></td>
+                  <td scope="col">Туя</td>
+                  <td scope="col">Площадка №4</td>
+                  <td scope="col">2</td>
+                  <td scope="col">0.2</td>
+                  <td scope="col">0.6</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">0</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">51.540295, 46.039033</td>
+                  <td scope="col"><a data-bs-toggle="modal" data-bs-target="#editModal" href="#"><img class="img_edit" src="../assets/images/edit.png" alt="edit"></a></td>
                 <tr>
-                    <td scope="col">3</td>
-                    <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                    <td scope="col">Туя</td>
-                    <td scope="col">Площадка №3</td>
-                    <td scope="col">2</td>
-                    <td scope="col">0.2</td>
-                    <td scope="col">0.6</td>
-                    <td scope="col">нет</td>
-                    <td scope="col">нет</td>
-                    <td scope="col">нет</td>
-                    <td scope="col">нет</td>
-                    <td scope="col">нет</td>
-                    <td scope="col"><a href="#">Подробнее</a></td>
-                  <tr>
-                    <tr>
-                        <td scope="col">4</td>
-                        <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                        <td scope="col">Туя</td>
-                        <td scope="col">Площадка №3</td>
-                        <td scope="col">2</td>
-                        <td scope="col">0.2</td>
-                        <td scope="col">0.6</td>
-                        <td scope="col">нет</td>
-                        <td scope="col">нет</td>
-                        <td scope="col">нет</td>
-                        <td scope="col">нет</td>
-                        <td scope="col">нет</td>
-                        <td scope="col"><a href="#">Подробнее</a></td>
-                      <tr>
-                        <tr>
-                            <td scope="col">5</td>
-                            <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                            <td scope="col">Туя</td>
-                            <td scope="col">Площадка №2</td>
-                            <td scope="col">2</td>
-                            <td scope="col">0.2</td>
-                            <td scope="col">0.6</td>
-                            <td scope="col">нет</td>
-                            <td scope="col">нет</td>
-                            <td scope="col">нет</td>
-                            <td scope="col">нет</td>
-                            <td scope="col">нет</td>
-                            <td scope="col"><a href="#">Подробнее</a></td>
-                          <tr>
-                            <tr>
-                                <td scope="col">6</td>
-                                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                <td scope="col">Туя</td>
-                                <td scope="col">Площадка №2</td>
-                                <td scope="col">2</td>
-                                <td scope="col">0.2</td>
-                                <td scope="col">0.6</td>
-                                <td scope="col">нет</td>
-                                <td scope="col">нет</td>
-                                <td scope="col">нет</td>
-                                <td scope="col">нет</td>
-                                <td scope="col">нет</td>
-                                <td scope="col"><a href="#">Подробнее</a></td>
-                              <tr>
-                                <tr>
-                                    <td scope="col">7</td>
-                                    <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                    <td scope="col">Туя</td>
-                                    <td scope="col">Площадка №1</td>
-                                    <td scope="col">2</td>
-                                    <td scope="col">0.2</td>
-                                    <td scope="col">0.6</td>
-                                    <td scope="col">нет</td>
-                                    <td scope="col">нет</td>
-                                    <td scope="col">нет</td>
-                                    <td scope="col">нет</td>
-                                    <td scope="col">нет</td>
-                                    <td scope="col"><a href="#">Подробнее</a></td>
-                                  <tr>
-                                    <tr>
-                                        <td scope="col">8</td>
-                                        <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                        <td scope="col">Туя</td>
-                                        <td scope="col">Площадка №3</td>
-                                        <td scope="col">2</td>
-                                        <td scope="col">0.2</td>
-                                        <td scope="col">0.6</td>
-                                        <td scope="col">нет</td>
-                                        <td scope="col">нет</td>
-                                        <td scope="col">нет</td>
-                                        <td scope="col">нет</td>
-                                        <td scope="col">нет</td>
-                                        <td scope="col"><a href="#">Подробнее</a></td>
-                                      <tr>
-                                        <tr>
-                                            <td scope="col">9</td>
-                                            <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                            <td scope="col">Туя</td>
-                                            <td scope="col">Площадка №3</td>
-                                            <td scope="col">2</td>
-                                            <td scope="col">0.2</td>
-                                            <td scope="col">0.6</td>
-                                            <td scope="col">нет</td>
-                                            <td scope="col">нет</td>
-                                            <td scope="col">нет</td>
-                                            <td scope="col">нет</td>
-                                            <td scope="col">нет</td>
-                                            <td scope="col"><a href="#">Подробнее</a></td>
-                                          <tr>
-                                            <tr>
-                                                <td scope="col">10</td>
-                                                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                                <td scope="col">Туя</td>
-                                                <td scope="col">Площадка №3</td>
-                                                <td scope="col">2</td>
-                                                <td scope="col">0.2</td>
-                                                <td scope="col">0.6</td>
-                                                <td scope="col">нет</td>
-                                                <td scope="col">нет</td>
-                                                <td scope="col">нет</td>
-                                                <td scope="col">нет</td>
-                                                <td scope="col">нет</td>
-                                                <td scope="col"><a href="#">Подробнее</a></td>
-                                              <tr>
-                                                <tr>
-                                                    <td scope="col">11</td>
-                                                    <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                                    <td scope="col">Туя</td>
-                                                    <td scope="col">Площадка №3</td>
-                                                    <td scope="col">2</td>
-                                                    <td scope="col">0.2</td>
-                                                    <td scope="col">0.6</td>
-                                                    <td scope="col">нет</td>
-                                                    <td scope="col">нет</td>
-                                                    <td scope="col">нет</td>
-                                                    <td scope="col">нет</td>
-                                                    <td scope="col">нет</td>
-                                                    <td scope="col"><a href="#">Подробнее</a></td>
-                                                  <tr>
-                                                    <tr>
-                                                        <td scope="col">12</td>
-                                                        <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                                        <td scope="col">Туя</td>
-                                                        <td scope="col">Площадка №3</td>
-                                                        <td scope="col">2</td>
-                                                        <td scope="col">0.2</td>
-                                                        <td scope="col">0.6</td>
-                                                        <td scope="col">нет</td>
-                                                        <td scope="col">нет</td>
-                                                        <td scope="col">нет</td>
-                                                        <td scope="col">нет</td>
-                                                        <td scope="col">нет</td>
-                                                        <td scope="col"><a href="#">Подробнее</a></td>
-                                                      <tr>
-                                                        <tr>
-                                                            <td scope="col">13</td>
-                                                            <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                                            <td scope="col">Туя</td>
-                                                            <td scope="col">Площадка №3</td>
-                                                            <td scope="col">2</td>
-                                                            <td scope="col">0.2</td>
-                                                            <td scope="col">0.6</td>
-                                                            <td scope="col">нет</td>
-                                                            <td scope="col">нет</td>
-                                                            <td scope="col">нет</td>
-                                                            <td scope="col">нет</td>
-                                                            <td scope="col">нет</td>
-                                                            <td scope="col"><a href="#">Подробнее</a></td>
-                                                          <tr>
-                                                            <tr>
-                                                                <td scope="col">14</td>
-                                                                <td scope="col"><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                                                <td scope="col">Туя</td>
-                                                                <td scope="col">Площадка №3</td>
-                                                                <td scope="col">2</td>
-                                                                <td scope="col">0.2</td>
-                                                                <td scope="col">0.6</td>
-                                                                <td scope="col">нет</td>
-                                                                <td scope="col">нет</td>
-                                                                <td scope="col">нет</td>
-                                                                <td scope="col">нет</td>
-                                                                <td scope="col">нет</td>
-                                                                <td scope="col"><a href="#">Подробнее</a></td>
-                                                              <tr>
-                                                                <tr>
-                                                                    <td >15</td>
-                                                                    <td ><img src="../assets/images/sosna.jpg" class="img-fluid table_img" ></td>
-                                                                    <td >Туя</td>
-                                                                    <td >Площадка №3</td>
-                                                                    <td>2</td>
-                                                                    <td >0.2</td>
-                                                                    <td >0.6</td>
-                                                                    <td >нет</td>
-                                                                    <td >нет</td>
-                                                                    <td>нет</td>
-                                                                    <td>нет</td>
-                                                                    <td >нет</td>
-                                                                    <td><a href="#">Подробнее</a></td>
-                                                                  <tr>
             </tbody>
           </table>
         </div>
+
+        
+
+        <!-- Модальное окно Фотографии дерева -->
+        <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+          <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="photoModalLabel">Фотография дерева (название, айди)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img class="modalPhoto" src="../assets/images/1_6_tuya.jpg" alt="photo">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Модальное окно Редактирования дерева -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-bs-labelledby="editModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Редактирование информации о дереве</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Закрыть"></button>
+              </div>
+              <div class="modal-body">
+
+                <div class="modal-body_element">
+                  <img src="../assets/images/1_6_tuya.jpg" class="img-fluid window_img">
+
+                  <label class="form-label">Высота, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Высота, м">
+                  </div>
+
+                  <label class="form-label">Нависание над тротуаром:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над тротуаром">Нависание над тротуаром</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+
+
+                <div class="modal-body_element">
+                  <label for="exampleDataList" class="form-label">Выберите породу:</label>
+                  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Название вида">
+                  <datalist id="datalistOptions">
+                    <option value="Туя">
+                    <option value="Тополь">
+                    <option value="Ель">
+                    <option value="Сосна">
+                    <option value="Каштан">
+                    <option value="Жимолость">
+                    <option value="Дуб">
+                    <option value="Береза">
+                  </datalist>
+
+                  <label class="form-label">Выберите площадку:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Площадка №1">Площадка №1</option>
+                  </select>
+
+                  <label class="form-label">Диаметр ствола, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Диаметр ствола, м">
+                  </div>
+
+                  <label class="form-label">Нависание над проводами:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над проводами">Нависание над проводами</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+
+
+                <div class="modal-body_element">
+
+                  <label class="form-label">Диаметр кроны, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Диаметр кроны, м">
+                  </div>
+
+                  <label class="form-label">Сухие ветви:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Сухие ветви">Сухие ветви</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+
+                  <label class="form-label">Отслоение коры:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Отслоение коры">Отслоение коры</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+                  <label class="form-label">Нависание над дорогой:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над дорогой">Нависание над дорогой</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+
+
+                <div class="modal-body_element">
+                  <label class="form-label">Наличие трещин:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Трещины">Трещины</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+                  <label class="form-label">Наличие потеков сока:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Потеки сока">Потеки сока</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+                  <label class="form-label">Наклон, °:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Наклон, °">
+                  </div>
+
+                  <label class="form-label">Координаты (00.000000, 00.000000):</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Координаты">
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Модальное окно Добавления дерева -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-bs-labelledby="addModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Добавление нового дерева</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Закрыть"></button>
+              </div>
+              <div class="modal-body">
+
+                <div class="modal-body_element">
+                  <img src="../assets/images/plug.jpg" class="img-fluid window_img">
+
+                  <label class="form-label">Высота, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Высота, м">
+                  </div>
+
+                  <label class="form-label">Нависание над тротуаром:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над тротуаром">Нависание над тротуаром</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+
+
+                <div class="modal-body_element">
+                  <label for="exampleDataList" class="form-label">Выберите породу:</label>
+                  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Название вида">
+                  <datalist id="datalistOptions">
+                    <option value="Туя">
+                    <option value="Тополь">
+                    <option value="Ель">
+                    <option value="Сосна">
+                    <option value="Каштан">
+                    <option value="Жимолость">
+                    <option value="Дуб">
+                    <option value="Береза">
+                  </datalist>
+
+                  <label class="form-label">Выберите площадку:</label>
+                  <select class="form-element-input">
+                    <option value="Площадка">Площадка</option>
+                    <option value="Площадка №1">Площадка №1</option>
+                    <option value="Площадка №2">Площадка №2</option>
+                    <option value="Площадка №3">Площадка №3</option>
+                    <option value="Площадка №4">Площадка №4</option>
+                  </select>
+
+                  <label class="form-label">Диаметр ствола, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Диаметр ствола, м">
+                  </div>
+
+                  <label class="form-label">Нависание над проводами:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над проводами">Нависание над проводами</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+
+
+                <div class="modal-body_element">
+
+                  <label class="form-label">Диаметр кроны, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Диаметр кроны, м">
+                  </div>
+
+                  <label class="form-label">Сухие ветви:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Сухие ветви">Сухие ветви</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+
+                  <label class="form-label">Отслоение коры:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Отслоение коры">Отслоение коры</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+                  <label class="form-label">Нависание над дорогой:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над дорогой">Нависание над дорогой</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+
+
+                <div class="modal-body_element">
+                  <label class="form-label">Наличие трещин:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Трещины">Трещины</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+                  <label class="form-label">Наличие потеков сока:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Потеки сока">Потеки сока</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+
+                  <label class="form-label">Наклон, °:</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Наклон, °">
+                  </div>
+
+                  <label class="form-label">Координаты (00.000000, 00.000000):</label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Координаты">
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">Площадка</th>
+                <th scope="col">Координаты</th>
+                <th scope="col">Вид</th>
+                <th scope="col">Высота, м</th>
+                <th scope="col">Фото</th>
+                <th scope="col">Диаметр ствола, м</th>
+                <th scope="col">Диаметр кроны, м</th>
+                <th scope="col">Сухие ветви</th>
+                <th scope="col">Трещины</th>
+                <th scope="col">Отслоение коры</th>
+                <th scope="col">Потеки сока</th>
+                <th scope="col">Наклон, °</th>
+                <th scope="col">Нависание над тротуаром</th>
+                <th scope="col">Нависание над проводами</th>
+                <th scope="col">Нависание над дорогой</th>
+                <th scope="col">Редактировать</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="col">1</td>
+                <td scope="col">Площадка №4</td>
+                <td scope="col">51.540273, 46.039105</td>
+                <td scope="col">Туя</td>
+                <td scope="col">2</td>
+                <td scope="col"><img src="../assets/images/1_6_tuya.jpg" class="img-fluid table_img" ></td>
+                <td scope="col">0.2</td>
+                <td scope="col">0.6</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">0</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col">нет</td>
+                <td scope="col"><a href="#">Ред</a></td>
+              <tr>
+
+                <tr>
+                  <td scope="col">2</td>
+                  <td scope="col">Площадка №4</td>
+                  <td scope="col">51.540295, 46.039033</td>
+                  <td scope="col">Туя</td>
+                  <td scope="col">2</td>
+                  <td scope="col"><img src="../assets/images/1_6_tuya.jpg" class="img-fluid table_img" ></td>
+                  <td scope="col">0.2</td>
+                  <td scope="col">0.6</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">0</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col">нет</td>
+                  <td scope="col"><a href="#">Ред</a></td>
+                <tr>
+            </tbody>
+          </table>
+        -->
+
       <!--   <div class="popupTree" class="hiddenTree">
             <div class="login-form">
                 <h3 class="login-form-title">1.1 Туя</h3>
@@ -342,6 +526,7 @@
 
 
     </main>
+
 
     <div class="wrap">
         <div id="footer">

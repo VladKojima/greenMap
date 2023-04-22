@@ -276,37 +276,35 @@ body {
     padding:48px;
 }
 .login-form-subtitle{
-
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-margin-bottom:48px;
-letter-spacing: 0.15px;
-color: rgba(0, 0, 0, 0.54);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom:48px;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.54);
 }
 .form-element{
     margin-bottom:12px;
 }
 
 input.form-element-input{
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 28px;
-display: flex;
-align-items: center;
-letter-spacing: 0.44px;
-color: rgba(0, 0, 0, 0.38);
-width:70%;
-padding:4px 16px;
-height:56px;
-border-color: rgba(0, 0, 0, 0.38);
-border-width: 1px;
-border-radius:2px;
-outline:none;
-
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.44px;
+    color: rgba(0, 0, 0, 0.38);
+    width:70%;
+    padding:4px 16px;
+    height:56px;
+    border-color: rgba(0, 0, 0, 0.38);
+    border-width: 1px;
+    border-radius:2px;
+    outline:none;
 }
 select.form-element-input{
     font-family: 'Montserrat';
@@ -323,18 +321,17 @@ select.form-element-input{
     border-width: 1px;
     border-radius:2px;
     outline:none;
-    margin-bottom:2rem;
-    
-    }
+    margin-bottom:1rem;
+}
 .login-form form{
     margin:36px 0px;
 }
 .login-form-footer{
     font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 16px;
-letter-spacing: 0.4px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
 }
 a.link-accent{
     color:var(--red);
@@ -346,72 +343,124 @@ a.link-accent:hover{
     transition:all 0.2s ease;
 }
 a.admin-nav{
-color:#fff;
-font-size:1rem;
-text-transform: uppercase;
-text-decoration:none;
+    color:#fff;
+    font-size:1rem;
+    text-transform: uppercase;
+    text-decoration:none;
 }
 a.admin-nav:hover, a.active{
     color:var(--red);
     text-transform: uppercase;
     text-decoration:underline;
     transition: all 0.2s ease;
-    }
-    a.active{
-        color:#fff;
-    }
+}
+a.active{
+    color:#fff;
+}
 
     /* Площадки-альтернатива */
 
-    .points{
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-    }
-    .points__container{
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-    }
-    .points__container-item{
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 18px;
-        color: #000000;
-        padding:27px 23px;
-        margin-right:43px;
-    }
-    .points__container-item span{
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 900;
-        font-size: 50px;
-        line-height: 59px;
-        text-align: center;
-        letter-spacing: 0.06em;
-        font-feature-settings: 'pnum' on, 'lnum' on;
+.points{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.points__container{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.points__container-item{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    padding:27px 23px;
+    margin-right:43px;
+}
+.points__container-item span{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 59px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    border: 2px solid #DE4E3E;
+}
+.containter{
+    position: relative;
+}
+/* Таблица насаждений */
+th{
+    font-size:0.8rem;
+    text-align:left;
+}
+.table_img{
+    width:30px;
+}
+.popupTree{
+    position: absolute;
+    top:100px;
+    left:100px;
+}
+.img_edit {
+    width: 40px;
+}
 
-        border: 2px solid #DE4E3E;
-    }
-    .containter{
-        position: relative;
-    }
 
-    /* Таблица насаждений */
-    th{
-        font-size:0.8rem;
-        text-align:left;
+/* Модальное окно */
 
-    }
-    .table_img{
-        width:30px;
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -5px;
+}
 
-    }
-    .popupTree{
-        position: absolute;
-        top:100px;
-        left:100px;
+.window_img {
+    margin-left: 20px;
+    width: 132px;
+    height: 176px !important;
+    border: solid 1px black;
+}
 
-    }
+.modal-body_element .form-control {
+    margin-bottom: 16px;
+}
+
+.modal-body_element select.form-element-input {
+    width: 170px;
+    padding: 4px 5px;
+}
+
+.modal-body_element {
+    width: 170px;
+    margin: 0 5px;
+}
+
+.input-group input, .form-control {
+    width: 170px;
+    height: 40px;
+    padding: 4px 8px;
+}
+
+.forAddBtn {
+    width: 100%;
+    position: relative;
+    height: 38px;
+    margin-bottom: 10px;
+}
+
+.addBtn {
+    position: absolute;
+    right: 0;
+}
+
+.modalPhoto {
+    width: 600px;
+    margin: auto;
+}
+
