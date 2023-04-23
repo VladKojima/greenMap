@@ -11,9 +11,9 @@ let photo = dark.getElementsByTagName('img')[0];
 function open_card(index) {
 
     index_tree = index;
-    img.setAttribute("style", "background-image: url('../assets/images/"+data[index]['photo']+"'), url('../assets/images/testicon.png')");
+    img.setAttribute("style", "background-image: url('"+serverURL_pics+"/"+data[index]['photo']+"'), url('../assets/images/testicon.png')");
     h5_name.innerHTML = data[index]['name'];
-    coords.innerHTML = data[index]['coordinates'][0] + ", " + data[index]['coordinates'][1];
+    coords.innerHTML = data[index]['latitude'] + ", " + data[index]['longitude'];
     card.querySelector('[class=number]').innerHTML = data[index]['id'];
     card.querySelector('[clas=size]').innerHTML = data[index]['height'];
     card.querySelectorAll('[clas=d]')[0].innerHTML = data[index]['cdiameter'];
@@ -25,8 +25,11 @@ function open_card(index) {
     card.querySelector('[class="content incline"]').innerHTML = data[index]['tilt'];
     card.querySelector('[class="content sidewalk"]').innerHTML = data[index]['overhanging_t']?'да':'нет';
     card.querySelector('[class="content cabels"]').innerHTML = data[index]['overhanging_p']?'да':'нет'
-    card.querySelector('[class="content cabels_comments"]').innerHTML = data[index]['overhanging_comment'];
-    card.querySelector('[class="content road"]').innerHTML = data[index]['overhanging_d']?'да':'нет'
+    card.querySelector('[class="content cabels_comments"]').innerHTML = data[index]['overhanging_comment'] ?? '';
+    card.querySelector('[class="content road"]').innerHTML = data[index]['overhanging_d']?'да':'нет';
+    card.querySelector('#locationName').innerHTML = data[index]['name_location'];
+    card.querySelector('[class="content species"]').innerHTML = data[index]['name_species'];
+
     card.style.display = "block";
 }
 
@@ -36,7 +39,7 @@ function close_card() {
 
 
 function open_photo() {
-    photo.setAttribute('src', '../assets/images/'+data[index_tree]['photo']);
+    photo.setAttribute('src',serverURL_pics+'/'+data[index_tree]['photo']);
     dark.style.display = "flex";
 }
 

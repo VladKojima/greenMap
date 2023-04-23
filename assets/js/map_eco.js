@@ -1,6 +1,30 @@
 var myMap;
 let clusterer;
 
+var serverURL = 'https://inpit.sstu.ru/greenmapServer/api';
+var url_gettrees = '/trees/getTrees';
+var url_moveTree = '/trees/moveTree';
+var serverURL_pics = 'https://inpit.sstu.ru/greenmapServer';
+
+async function getTrees(location_id) {
+    // это get-Запрос, поэтому id тоже пойдет с url
+    return (await axios.get(serverURL + url_gettrees + '/' + location_id)).data;
+}
+
+async function moveTree(tree_id, lat, long) {
+    var jsonbody = {};
+    // тут координаты - не массив
+    jsonbody['latitude'] = lat;
+    jsonbody['longitude'] = long;
+    jsonbody['tree_id'] = tree_id;
+
+    await axios.post(serverURL + url_moveTree, JSON.stringify(jsonbody)).then(response => {
+      console.log(response.data);
+}).catch((error) => {
+    console.log(error)
+});
+}
+
 function setDefImg(elem)
 {elem.setAttribute('src', "../assets/images/testicon.png")}
 
@@ -12,30 +36,9 @@ m.set(4, [51.540273,46.039105]);
 
 const types = new Set();
 
+const loadedLocations = new Set(); // сделать оптимизацию для ускорения загрузки
+
 let balloon = document.getElementsByClassName('balloon')[0];
-
-if(!localStorage.getItem('location'))
-{
-  let item = [1];
-  localStorage.setItem('location',JSON.stringify(item));
-}
-
-JSON.parse(localStorage.getItem('location')).forEach((item) => {
-  switch (item) {
-    case 1:
-      studTown.checked=true
-      break;
-    case 2:
-      streetPoliteh.checked=true
-      break;
-    case 3:
-      admissionCommittee.checked=true
-      break;
-    case 4:
-      econom.checked=true
-      break;
-  }
-});
 
 ymaps.ready(init);
 
@@ -48,19 +51,46 @@ async function init(){
   });
 
   let it = 0;
-  types.forEach((item) => {
-    let elem = protot.cloneNode();
-    let label = protot.labels[0].cloneNode();
+
+  for(let item of types)
+  {
+    let elem = typePrototype.cloneNode();
+    let label = typePrototype.labels[0].cloneNode();
     elem.id = 'types'+it++;
     elem.checked = true;
     label.textContent = item;
     label.setAttribute('for',elem.id);
-    protot.parentElement.append(elem);
-    protot.parentElement.append(label);
-    protot.parentElement.append(document.createElement('br'));
+    typePrototype.parentElement.append(elem);
+    typePrototype.parentElement.append(label);
+    typePrototype.parentElement.append(document.createElement('br'));
+  };
+  typePrototype.labels[0].remove();
+  typePrototype.remove();
+
+  for(let item of await getLocations())
+  {
+    let elem = locationPrototype.cloneNode();
+    let label = locationPrototype.labels[0].cloneNode();
+    elem.id = 'location'+item['id'];
+    elem.checked = false;
+    label.textContent = item['name'];
+    label.setAttribute('for',elem.id);
+    locationPrototype.parentElement.append(elem);
+    locationPrototype.parentElement.append(label);
+    locationPrototype.parentElement.append(document.createElement('br'));
+  }
+  locationPrototype.labels[0].remove();
+  locationPrototype.remove();
+
+  if(!localStorage.getItem('location'))
+  {
+    let item = [1];
+    localStorage.setItem('location',JSON.stringify(item));
+  }
+
+  JSON.parse(localStorage.getItem('location')).forEach((item) => {
+    document.getElementById('location'+item).checked = true;
   });
-  protot.labels[0].remove();
-  protot.remove();
 
     // Создание карты.
     myMap = new ymaps.Map("map_sstucity", {
@@ -69,10 +99,10 @@ async function init(){
         zoom: 17,
       },
       {
-        restrictMapArea: [
+        /*restrictMapArea: [
             [51.546007, 45.967917],
             [51.521625, 46.054699]
-        ]
+        ]*/
       }
     );
     // Создаём макет содержимого.
@@ -85,19 +115,27 @@ async function init(){
     for (let i = 0; i < data.length; i++) {
         let elem = balloon.cloneNode(true);
         let img =elem.querySelector('img');
-        img.src="../assets/images/"+data[i]["photo"];
-        img.setAttribute("onerror", "setDefImg(this)")
+
+        let photo = data[i]['photo'];
+
+        if(!photo)
+          photo = "uploads/default_tree.jpg";
+
+        img.src=serverURL_pics+'/'+photo;
+
+        img.setAttribute("onerror", "setDefImg(this)");
+
         elem.querySelector('span').textContent=data[i]['name'];
         elem.querySelector('a').setAttribute('onclick', 'open_card('+i+')')
         elem.style.display = null
-        array[i] = new ymaps.Placemark(data[i]['coordinates'], {
+        array[i] = new ymaps.Placemark([data[i]['latitude'],data[i]['longitude']], {
             hintContent: data[i]['name'],
             balloonContent: elem.outerHTML,
             clusterCaption: '<strong>' + data[i]['id']+' '+data[i]['name'] + '</strong>'
 
         }, {
             iconLayout: 'default#imageWithContent',
-            iconImageHref: '../assets/images/'+data[i]['icon'],
+            iconImageHref: '../assets/images/'+'deciduous_tree.svg',
             iconImageSize: [28, 28],
             iconImageOffset: [-24, -24],
             iconContentLayout: MyIconContentLayout,
@@ -127,7 +165,6 @@ async function init(){
 
     app();
 
-
 }
 
 function app(searchId){
@@ -139,22 +176,8 @@ function app(searchId){
         if(searchId==elm['id']) return true;
         return false;
       }
-        let fl=false;
-        if (document.getElementById('studTown').checked && elm['location']==1) {
-            fl = true;
-        }
-        else if (document.getElementById('streetPoliteh').checked && elm['location']==2) {
-            fl = true;
-        }
-        else if (document.getElementById('admissionCommittee').checked && elm['location']==3) {
-            fl = true;
-        }
-        else if (document.getElementById('econom').checked && elm['location']==4) {
-            fl = true;
-        }
-        else{
-            return false;
-        }
+
+        if(!document.getElementById('location'+elm['location']).checked) return false;
 
         if(!document.getElementById('types'+Array.from(types).indexOf(elm['name'])).checked) return false;
         if (document.getElementById('wires1').checked && document.getElementById('wires1').value==1 && elm['overhanging_p']==true);
@@ -212,12 +235,12 @@ function app(searchId){
         else{
             return false;
         }
-        if (elm['coordinates'][0]==(''+document.getElementById('coordinatesNumber1').value) && elm['coordinates'][1]==(''+document.getElementById('coordinatesNumber2').value));
+        if (elm['latitude']==(''+document.getElementById('coordinatesNumber1').value) && elm['longitude']==(''+document.getElementById('coordinatesNumber2').value));
         else if (document.getElementById('coordinatesNumber1').value=='' || document.getElementById('coordinatesNumber2').value=='');
         else{
             return false;
         }
-        return fl;
+        return true;
     });
     // при неудачном поиске
     if(datas.length==0&&searchId)
@@ -228,10 +251,12 @@ function app(searchId){
     clusterer.add(datas);
 
     let item = [];
-    if(studTown.checked) item.push(1);
-    if(streetPoliteh.checked) item.push(2);
-    if(admissionCommittee.checked) item.push(3);
-    if(econom.checked) item.push(4);
+
+    for(let checkbox of document.getElementById('tlocations').querySelectorAll('input'))
+    {
+      if(checkbox.checked) item.push(parseInt(checkbox.id.replace('location','')));
+    }
+
     if(item.length>0)
     localStorage.setItem('location',JSON.stringify(item));
 
@@ -252,10 +277,7 @@ function hideFilter(){
 
 function clearMap(){
   data.forEach(elm=>document.getElementById('types'+Array.from(types).indexOf(elm['name'])).checked=true);
-  document.getElementById('studTown').checked=false;
-  document.getElementById('streetPoliteh').checked=false;
-  document.getElementById('admissionCommittee').checked=false;
-  document.getElementById('econom').checked=true;
+
   document.getElementById('wires2').checked=true;
   document.getElementById('sidewalk2').checked=true;
   document.getElementById('road2').checked=true;
@@ -289,7 +311,7 @@ function dragReset()
 {
   for(let item of drags)
   {
-    item.geometry.setCoordinates(item.data['coordinates']);
+    item.geometry.setCoordinates([item.data['latitude'],item.data['longitude']]);
     clusterer.remove(item);
     clusterer.add(item);
   }
@@ -327,9 +349,11 @@ function  dragSave()
 {
   for(let item of drags)
   {
-    // сохранение координат на сервере
+    let [latitude, longitude] = item.geometry.getCoordinates();
 
-    item.data['coordinates']=item.geometry.getCoordinates();
+    moveTree(item.data['id'], latitude, longitude);
+
+    [item.data['latitude'],item.data['longitude']]=[latitude, longitude];
   }
 
   drags.clear();

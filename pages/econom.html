@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../assets/css/clusters.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -84,20 +85,14 @@
                         <h5 class="h_filters">Вид</h5>
 
 
-                        <input type='checkbox' id='protot' checked=true class="check_filters"/>
-                        <label for="protot" class="text_filters"></label>
+                        <input type='checkbox' id='typePrototype' checked=true class="check_filters"/>
+                        <label for="typePrototype" class="text_filters"></label>
 
                     </div>
-                    <div class="filters">
-                        <h5 class="h_filters">Площадка</h5>
-                        <input type='checkbox' id='studTown' class="check_filters"/>
-                        <label for="studTown" class="text_filters">Студенческий городок</label><br>
-                        <input type='checkbox' id='streetPoliteh' class="check_filters"/>
-                        <label for="streetPoliteh" class="text_filters">Улица Политехническая</label><br>
-                        <input type='checkbox' id='admissionCommittee' class="check_filters"/>
-                        <label for="admissionCommittee" class="text_filters">Общежития СЭИ</label><br>
-                        <input type='checkbox' id='econom' class="check_filters"/>
-                        <label for="econom" class="text_filters">СЭИ</label><br>
+                    <div class="filters" id = 'tlocations'>
+                        <h5 class="h_filters" >Площадка</h5>
+                        <input type='checkbox' id='locationPrototype' class="check_filters"/>
+                        <label for="locationPrototype" class="text_filters"></label><br>
                     </div>
                     <div class="filters">
                         <h5 class="h_filters">Нависание над проводами</h5>
@@ -202,7 +197,7 @@
                                 <span class="coordinates">51.456 , 46.456</span>
                             </div>
                             <div class="place">
-                                Площадка №3 СЭИ
+                                Площадка: <span id="locationName">/<span>
                             </div>
                         </div>
                         <img class="close" onclick="close_card()" src="../assets/images/closecircle.png" alt="">
@@ -222,6 +217,9 @@
                         </div>
 
                         <!-- <div class="mainpart"> -->
+                            <div class="r">
+                                Порода : <span class="content species"></span>
+                            </div>
                             <div class="r">
                                 Сухие ветви : <span class="content stick">нет</span>
                             </div>
