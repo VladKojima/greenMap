@@ -172,7 +172,7 @@
 
         <!-- Модальное окно Редактирования дерева -->
         <div class="modal fade" id="editModal" tabindex="-1" aria-bs-labelledby="editModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-dialog modal-dialog-centered modal-xl modal_width">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="editModalLabel">Редактирование информации о дереве</h5>
@@ -180,20 +180,14 @@
               </div>
               <div class="modal-body">
 
-                <div class="modal-body_element">
-                  <img src="../assets/images/1_6_tuya.jpg" class="img-fluid window_img">
-
-                  <label class="form-label">Высота, м:</label>
-                  <div class="input-group mb-3">
-                    <input type="text" placeholder="Высота, м">
-                  </div>
-
-                  <label class="form-label">Нависание над тротуаром:</label>
-                  <select class="form-element-input">
-                    <option disabled selected value="Нависание над тротуаром">Нависание над тротуаром</option>
-                    <option value="Есть">Есть</option>
-                    <option value="Нет">Нет</option>
-                  </select>
+                <div class="modal-body_element modal___image">
+                  <label>
+                    <div class="containerImg">
+                      <img src="../assets/images/1_6_tuya.jpg" alt="" class="img-fluid window_img">
+                      <p class="caption">Редактировать</p>
+                    </div>
+                    <input type="file" name="" value="" style="display: none;">
+                  </label>
                 </div>
 
 
@@ -217,9 +211,9 @@
                     <option disabled selected value="Площадка №1">Площадка №1</option>
                   </select>
 
-                  <label class="form-label">Диаметр ствола, м:</label>
+                  <label class="form-label">Описание дерева:</label>
                   <div class="input-group mb-3">
-                    <input type="text" placeholder="Диаметр ствола, м">
+                    <input type="text"placeholder="Описание">
                   </div>
 
                   <label class="form-label">Нависание над проводами:</label>
@@ -234,9 +228,9 @@
 
                 <div class="modal-body_element">
 
-                  <label class="form-label">Диаметр кроны, м:</label>
+                  <label class="form-label">Высота, м:</label>
                   <div class="input-group mb-3">
-                    <input type="text" placeholder="Диаметр кроны, м">
+                    <input type="number" min="0" max="100" step="0.1" placeholder="Высота, м">
                   </div>
 
                   <label class="form-label">Сухие ветви:</label>
@@ -265,6 +259,12 @@
 
 
                 <div class="modal-body_element">
+
+                  <label class="form-label">Диаметр ствола, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="100" step="0.001" placeholder="Диаметр ствола, м">
+                  </div>
+
                   <label class="form-label">Наличие трещин:</label>
                   <select class="form-element-input">
                     <option disabled selected value="Трещины">Трещины</option>
@@ -272,22 +272,44 @@
                     <option value="Нет">Нет</option>
                   </select>
 
+                  <label class="form-label">Наклон, °:</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="180" step="0.1" placeholder="Наклон, °">
+                  </div>
+
+                  <label class="form-label">Нависание над тротуаром:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над тротуаром">Нависание над тротуаром</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+                <div class="modal-body_element">
+
+                  <label class="form-label">Диаметр кроны, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="100" step="0.1" placeholder="Диаметр кроны, м">
+                  </div>
+
                   <label class="form-label">Наличие потеков сока:</label>
                   <select class="form-element-input">
                     <option disabled selected value="Потеки сока">Потеки сока</option>
                     <option value="Есть">Есть</option>
                     <option value="Нет">Нет</option>
                   </select>
-
-                  <label class="form-label">Наклон, °:</label>
-                  <div class="input-group mb-3">
-                    <input type="text" placeholder="Наклон, °">
-                  </div>
-
-                  <label class="form-label">Координаты (00.000000, 00.000000):</label>
+                  
+                  <label class="form-label">Координаты (широта):</label>
                   <div class="input-group mb-3">
                     <input type="text" placeholder="Координаты">
                   </div>
+
+                  <label class="form-label">Координаты<br> (долгота):<br></label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Координаты">
+                  </div>
+
+
                 </div>
               </div>
 
@@ -302,7 +324,7 @@
 
         <!-- Модальное окно Добавления дерева -->
         <div class="modal fade" id="addModal" tabindex="-1" aria-bs-labelledby="addModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-dialog modal-dialog-centered modal-xl modal_width">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="addModalLabel">Добавление нового дерева</h5>
@@ -310,20 +332,14 @@
               </div>
               <div class="modal-body">
 
-                <div class="modal-body_element">
-                  <img src="../assets/images/plug.jpg" class="img-fluid window_img">
-
-                  <label class="form-label">Высота, м:</label>
-                  <div class="input-group mb-3">
-                    <input type="text" placeholder="Высота, м">
-                  </div>
-
-                  <label class="form-label">Нависание над тротуаром:</label>
-                  <select class="form-element-input">
-                    <option disabled selected value="Нависание над тротуаром">Нависание над тротуаром</option>
-                    <option value="Есть">Есть</option>
-                    <option value="Нет">Нет</option>
-                  </select>
+                <div class="modal-body_element modal___image">
+                  <label>
+                    <div class="containerImg">
+                      <img src="../assets/images/plug.jpg" alt="" class="img-fluid window_img">
+                      <p class="caption">Редактировать</p>
+                    </div>
+                    <input type="file" name="" value="" style="display: none;">
+                  </label>
                 </div>
 
 
@@ -344,16 +360,12 @@
 
                   <label class="form-label">Выберите площадку:</label>
                   <select class="form-element-input">
-                    <option value="Площадка">Площадка</option>
-                    <option value="Площадка №1">Площадка №1</option>
-                    <option value="Площадка №2">Площадка №2</option>
-                    <option value="Площадка №3">Площадка №3</option>
-                    <option value="Площадка №4">Площадка №4</option>
+                    <option disabled selected value="Площадка №1">Площадка №1</option>
                   </select>
 
-                  <label class="form-label">Диаметр ствола, м:</label>
+                  <label class="form-label">Описание дерева:</label>
                   <div class="input-group mb-3">
-                    <input type="text" placeholder="Диаметр ствола, м">
+                    <input type="text"placeholder="Описание">
                   </div>
 
                   <label class="form-label">Нависание над проводами:</label>
@@ -368,9 +380,9 @@
 
                 <div class="modal-body_element">
 
-                  <label class="form-label">Диаметр кроны, м:</label>
+                  <label class="form-label">Высота, м:</label>
                   <div class="input-group mb-3">
-                    <input type="text" placeholder="Диаметр кроны, м">
+                    <input type="number" min="0" max="100" step="0.1" placeholder="Высота, м">
                   </div>
 
                   <label class="form-label">Сухие ветви:</label>
@@ -399,6 +411,12 @@
 
 
                 <div class="modal-body_element">
+
+                  <label class="form-label">Диаметр ствола, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="100" step="0.001" placeholder="Диаметр ствола, м">
+                  </div>
+
                   <label class="form-label">Наличие трещин:</label>
                   <select class="form-element-input">
                     <option disabled selected value="Трещины">Трещины</option>
@@ -406,22 +424,44 @@
                     <option value="Нет">Нет</option>
                   </select>
 
+                  <label class="form-label">Наклон, °:</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="180" step="0.1" placeholder="Наклон, °">
+                  </div>
+
+                  <label class="form-label">Нависание над тротуаром:</label>
+                  <select class="form-element-input">
+                    <option disabled selected value="Нависание над тротуаром">Нависание над тротуаром</option>
+                    <option value="Есть">Есть</option>
+                    <option value="Нет">Нет</option>
+                  </select>
+                </div>
+
+                <div class="modal-body_element">
+
+                  <label class="form-label">Диаметр кроны, м:</label>
+                  <div class="input-group mb-3">
+                    <input type="number" min="0" max="100" step="0.1" placeholder="Диаметр кроны, м">
+                  </div>
+
                   <label class="form-label">Наличие потеков сока:</label>
                   <select class="form-element-input">
                     <option disabled selected value="Потеки сока">Потеки сока</option>
                     <option value="Есть">Есть</option>
                     <option value="Нет">Нет</option>
                   </select>
-
-                  <label class="form-label">Наклон, °:</label>
-                  <div class="input-group mb-3">
-                    <input type="text" placeholder="Наклон, °">
-                  </div>
-
-                  <label class="form-label">Координаты (00.000000, 00.000000):</label>
+                  
+                  <label class="form-label">Координаты (широта):</label>
                   <div class="input-group mb-3">
                     <input type="text" placeholder="Координаты">
                   </div>
+
+                  <label class="form-label">Координаты<br> (долгота):<br></label>
+                  <div class="input-group mb-3">
+                    <input type="text" placeholder="Координаты">
+                  </div>
+
+
                 </div>
               </div>
 
