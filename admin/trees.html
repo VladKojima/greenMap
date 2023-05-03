@@ -11,7 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="../assets/js/index.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -50,31 +51,31 @@
         <h3>Зеленые насаждения</h3>
         <div class="filter___block">
             <form action="" class="form-filter">
-                <select name="point" id="point" class="form-element-input">
+                <select name="point" id="point1" class="form-element-input">
                     <option value="Площадка">Выберите площадку</option>
                     <option value="Площадка №1">Площадка №1</option>
                     <option value="Площадка №2">Площадка №2</option>
                     <option value="Площадка №3">Площадка №3</option>
                     <option value="Площадка №4">Площадка №4</option>
                 </select>
-                <select name="point" id="point" class="form-element-input">
+                <select name="point" id="point2" class="form-element-input">
                     <option value="Вид">Выберите вид</option>
                     <option value="Туя">Туя</option>
                     <option value="Тополь">Тополь</option>
                     <option value="Ель">Ель</option>
                     <option value="Сосна">Сосна</option>
                 </select>
-                <select name="point" id="point" class="form-element-input">
+                <select name="point" id="point3" class="form-element-input">
                     <option value="Нависание над тротуаром">Нависание над тротуаром</option>
                     <option value="Да">Да</option>
                     <option value="Нет">Нет</option>
                 </select>
-                <select name="point" id="point" class="form-element-input">
+                <select name="point" id="point4" class="form-element-input">
                   <option value="Нависание над проводами">Нависание над проводами</option>
                   <option value="Да">Да</option>
                   <option value="Нет">Нет</option>
               </select>
-              <select name="point" id="point" class="form-element-input">
+              <select name="point" id="point5" class="form-element-input">
                 <option value="Нависание над дорогой">Нависание над дорогой</option>
                 <option value="Да">Да</option>
                 <option value="Нет">Нет</option>
@@ -86,6 +87,13 @@
               </button>
             </div>
         </div>
+          <!-- Пагинация -->
+          <nav aria-label="Page navigation example">
+          <ul class="pagination nav1 justify-content-center">
+          
+          </ul>
+        </nav>
+         <!---->
         <table class="table table-striped">
             <thead>
               <tr>
@@ -109,7 +117,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <!-- <tr>
                 <td scope="col">1</td>
                 <td scope="col"><a data-bs-toggle="modal" data-bs-target="#photoModal" href="#"><img src="../assets/images/1_6_tuya.jpg" class="img-fluid table_img"></a></td>
                 <td scope="col">Туя</td>
@@ -127,32 +135,20 @@
                 <td scope="col">нет</td>
                 <td scope="col">51.540273, 46.039105</td>
                 <td scope="col"><a data-bs-toggle="modal" data-bs-target="#editModal" href="#"><img class="img_edit" src="../assets/images/edit.png" alt="edit"></a></td>
-              <tr>
+              <tr> -->
 
-                <tr>
-                  <td scope="col">2</td>
-                  <td scope="col"><a data-bs-toggle="modal" data-bs-target="#photoModal" href="#"><img src="../assets/images/1_6_tuya.jpg" class="img-fluid table_img"></a></td>
-                  <td scope="col">Туя</td>
-                  <td scope="col">Площадка №4</td>
-                  <td scope="col">2</td>
-                  <td scope="col">0.2</td>
-                  <td scope="col">0.6</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">0</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">нет</td>
-                  <td scope="col">51.540295, 46.039033</td>
-                  <td scope="col"><a data-bs-toggle="modal" data-bs-target="#editModal" href="#"><img class="img_edit" src="../assets/images/edit.png" alt="edit"></a></td>
-                <tr>
+             
             </tbody>
           </table>
         </div>
 
-        
+        <!--Пагинация-->
+        <nav aria-label="Page navigation ">
+          <ul class="pagination nav2 justify-content-center">
+          
+          </ul>
+        </nav>
+        <!---->
 
         <!-- Модальное окно Фотографии дерева -->
         <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
@@ -323,9 +319,9 @@
 
 
         <!-- Модальное окно Добавления дерева -->
-        <div class="modal fade" id="addModal" tabindex="-1" aria-bs-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal fade " id="addModal" tabindex="-1" aria-bs-labelledby="addModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-xl modal_width">
-            <div class="modal-content">
+            <div class="modal-content add">
               <div class="modal-header">
                 <h5 class="modal-title" id="addModalLabel">Добавление нового дерева</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Закрыть"></button>
@@ -335,10 +331,10 @@
                 <div class="modal-body_element modal___image">
                   <label>
                     <div class="containerImg">
-                      <img src="../assets/images/plug.jpg" alt="" class="img-fluid window_img">
+                      <img src="../assets/images/plug.jpg" alt="" class="img-fluid window_img tree_img">
                       <p class="caption">Редактировать</p>
                     </div>
-                    <input type="file" name="" value="" style="display: none;">
+                    <input type="file" name="" value="" class="input_file" style="display: none;">
                   </label>
                 </div>
 
@@ -360,7 +356,10 @@
 
                   <label class="form-label">Выберите площадку:</label>
                   <select class="form-element-input">
-                    <option disabled selected value="Площадка №1">Площадка №1</option>
+                    <option  value="Площадка №1">Площадка №1</option>
+                    <option  value="Площадка №2">Площадка №2</option>
+                    <option  value="Площадка №3">Площадка №3</option>
+                    <option  value="Площадка №4">Площадка №4</option>
                   </select>
 
                   <label class="form-label">Описание дерева:</label>
@@ -467,11 +466,12 @@
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                <button type="button" class="btn btn-primary save">Сохранить изменения</button>
               </div>
             </div>
           </div>
         </div>
+       
 
         <!--
           <table class="table table-striped">
@@ -577,6 +577,32 @@
             </ul>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/dataeco.js"> </script>
+    <script src="../assets/js/datasstu.js"> </script>
+    <script src="../assets/js/utilites.js"> </script>
+    <script src="../assets/js/sort.js"></script>
+    <script src="../assets/js/add_datasstu.js"></script>
+    <script>
+        var serverURL = 'https://inpit.sstu.ru/greenmapServer/api'; /* адрес до сервера в целом. Для запросов */
+        var serverURL_pics = 'https://inpit.sstu.ru/greenmapServer'; /* адрес до сервера для картинок */
+        var url_getLocations = '/locations/getLocations';
+        var url_gettrees = '/trees/getTrees'; 
+        var url_addtree = '/trees/addTree';
+        var location_id=1
+        
+          getLocations().then(res=>{
+          getAllTrees(res.locations.map(v=>{return Number(v.id)})).then(res=>{
+          start(res.map(v=>{return v.value}))})
+          $('.input_file').on('change',onFileSelected)
+          })
+          $('.save').on('click',()=>{
+            let inputs=[...$('.add input'),...$('.add select')]
+            addTree(inputs)
+        })
+      
+    </script>
 </body>
 
 </html>
