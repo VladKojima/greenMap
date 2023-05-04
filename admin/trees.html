@@ -53,17 +53,11 @@
             <form action="" class="form-filter">
                 <select name="point" id="point1" class="form-element-input">
                     <option value="Площадка">Выберите площадку</option>
-                    <option value="Площадка №1">Площадка №1</option>
-                    <option value="Площадка №2">Площадка №2</option>
-                    <option value="Площадка №3">Площадка №3</option>
-                    <option value="Площадка №4">Площадка №4</option>
+             
                 </select>
                 <select name="point" id="point2" class="form-element-input">
                     <option value="Вид">Выберите вид</option>
-                    <option value="Туя">Туя</option>
-                    <option value="Тополь">Тополь</option>
-                    <option value="Ель">Ель</option>
-                    <option value="Сосна">Сосна</option>
+               
                 </select>
                 <select name="point" id="point3" class="form-element-input">
                     <option value="Нависание над тротуаром">Нависание над тротуаром</option>
@@ -155,7 +149,7 @@
           <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="photoModalLabel">Фотография дерева (название, айди)</h5>
+                <h5 class="modal-title" id="photoModalLabel">Фотография дерева</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -190,21 +184,13 @@
 
                 <div class="modal-body_element">
                   <label for="exampleDataList" class="form-label">Выберите породу:</label>
-                  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Название вида">
-                  <datalist id="datalistOptions">
-                    <option value="Туя">
-                    <option value="Тополь">
-                    <option value="Ель">
-                    <option value="Сосна">
-                    <option value="Каштан">
-                    <option value="Жимолость">
-                    <option value="Дуб">
-                    <option value="Береза">
+                  <input class="form-control" list="datalistOptions1" id="exampleDataList" placeholder="Название вида">
+                  <datalist id="datalistOptions1">
+    
                   </datalist>
 
                   <label class="form-label">Выберите площадку:</label>
-                  <select class="form-element-input">
-                    <option disabled selected value="Площадка №1">Площадка №1</option>
+                  <select disabled class="form-element-input " id="second">
                   </select>
 
                   <label class="form-label">Описание дерева:</label>
@@ -311,7 +297,7 @@
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                <button type="button" class="btn btn-primary save2">Сохранить изменения</button>
               </div>
             </div>
           </div>
@@ -342,24 +328,14 @@
 
                 <div class="modal-body_element">
                   <label for="exampleDataList" class="form-label">Выберите породу:</label>
-                  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Название вида">
-                  <datalist id="datalistOptions">
-                    <option value="Туя">
-                    <option value="Тополь">
-                    <option value="Ель">
-                    <option value="Сосна">
-                    <option value="Каштан">
-                    <option value="Жимолость">
-                    <option value="Дуб">
-                    <option value="Береза">
+                  <input class="form-control" list="datalistOptions2" id="exampleDataList" placeholder="Название вида">
+                  <datalist id="datalistOptions2">
+             
                   </datalist>
 
                   <label class="form-label">Выберите площадку:</label>
-                  <select class="form-element-input">
-                    <option  value="Площадка №1">Площадка №1</option>
-                    <option  value="Площадка №2">Площадка №2</option>
-                    <option  value="Площадка №3">Площадка №3</option>
-                    <option  value="Площадка №4">Площадка №4</option>
+                  <select class="form-element-input square">
+              
                   </select>
 
                   <label class="form-label">Описание дерева:</label>
@@ -590,18 +566,36 @@
         var url_getLocations = '/locations/getLocations';
         var url_gettrees = '/trees/getTrees'; 
         var url_addtree = '/trees/addTree';
+        var url_editTree = '/trees/editTree';
         var location_id=1
         
           getLocations().then(res=>{
-          getAllTrees(res.locations.map(v=>{return Number(v.id)})).then(res=>{
-          start(res.map(v=>{return v.value}))})
+            getAllTrees(res.locations.map(v=>{
+              return Number(v.id)})).then(res=>{
+              start(res.map(v=>{return v.value}))})
           $('.input_file').on('change',onFileSelected)
           })
           $('.save').on('click',()=>{
             let inputs=[...$('.add input'),...$('.add select')]
             addTree(inputs)
         })
-      
+        getLocations().then(res=>{
+          res.locations.map((v)=>{
+            let select=$('<option>')
+            select.attr('value','Площадка №'+v.id)
+            select.append('Площадка №'+v.id)
+            $('#point1').append(select) 
+            let select2=$('<option>')
+            select2.attr('value','Площадка №'+v.id)
+            select2.append('Площадка №'+v.id)
+            $('.square').append(select2) })
+          
+        })
+        $('.save2').on('click',()=>{
+          editTree($('.save2').attr('data-id'),([...$('#editModal input'),...$('#editModal select')]))
+          location.reload()
+         
+        })
     </script>
 </body>
 

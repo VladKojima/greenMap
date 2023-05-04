@@ -259,30 +259,35 @@ function pagin(obj){
         aa.attr('data-bs-toggle','modal')
         aa.attr('data-bs-target','#photoModal')
         aa.attr('href','#')
+       
         let img=$('<img>')
         if(v.photo!=undefined){
           if(v.photo!=''){
+            aa.on('click',()=>{$('.modalPhoto').attr('src',serverURL_pics+'/'+v.photo)})
             img.attr('src',serverURL_pics+'/'+v.photo)
-          }
+          }  else{ 
+            img.attr('src','../assets/images/noroot.png')
+            aa.on('click',()=>{$('.modalPhoto').attr('src','../assets/images/noroot.png')})}
         }
-     
+        else{ img.attr('src','../assets/images/noroot.png')
+        aa.on('click',()=>{$('.modalPhoto').attr('src','../assets/images/noroot.png')})}
      
         img.addClass('img-fluid', 'table_img')
-        img.on('load',()=>{   aa.append(img)})
+        img.on('load',()=>{aa.append(img)})
         td2.append(aa)
         td3.append(v.name)
         td4.append('Площадка №'+v.location)
         td5.append(v.height)
         td6.append(v.cdiameter)
         td7.append(v.tdiameter)
-        td8.append(v.dry===true?'есть':'нет')
-        td9.append(v.detachment===true?'есть':'нет')
-        td10.append(v.cracks===true?'есть':'нет')
-        td11.append(v.drips===true?'есть':'нет')
+        td8.append(v.dry==1?'есть':'нет')
+        td9.append(v.detachment==1?'есть':'нет')
+        td10.append(v.cracks==1?'есть':'нет')
+        td11.append(v.drips==1?'есть':'нет')
         td12.append(v.tilt)
-        td13.append(v.overhanging_t===true?'есть':'нет')
-        td14.append(v.overhanging_p===true?'есть':'нет')
-        td15.append(v.overhanging_d===true?'есть':'нет')
+        td13.append(v.overhanging_t==1?'есть':'нет')
+        td14.append(v.overhanging_p==1?'есть':'нет')
+        td15.append(v.overhanging_d==1?'есть':'нет')
         td16.append(v.latitude
           +', '+v.longitude
           )
@@ -290,6 +295,43 @@ function pagin(obj){
         a.attr('data-bs-toggle','modal')
         a.attr('data-bs-target','#editModal')
         a.attr('href','#')
+        a.on('click',()=>{
+          let h=([...$('#editModal input'),...$('#editModal select')])
+          $(h[1]).val(v.name)
+          if(v.name.split(' ').length>1){
+           
+          }
+          else{
+            $(h[2]).val('')
+          }
+          if(v.photo!=undefined){
+            if(v.photo!=''){
+              $('.window_img').attr('src',serverURL_pics+'/'+v.photo)
+            }
+            else{
+              $('.window_img').attr('src','../assets/images/noroot.png')
+            }
+          } else{
+            $('.window_img').attr('src','../assets/images/noroot.png')
+          }
+         
+          $(h[3]).val(v.height)
+          $(h[4]).val(v.cdiameter)
+          $(h[5]).val(v.tilt)
+          $(h[6]).val(v.tdiameter)
+          $(h[7]).val(v.latitude)
+          $(h[8]).val(v.longitude)
+          $(h[9]).empty()
+          $(h[9]).append('<option value ="Площадка №'+v.location+'">'+'Площадка №'+v.location+'</option')
+          $(h[10]).val(v.overhanging_p==1?'Есть':'Нет')
+          $(h[11]).val(v.dry==1?'Есть':'Нет')
+          $(h[12]).val(v.detachment==1?'Есть':'Нет')
+          $(h[13]).val(v.overhanging_d==1?'Есть':'Нет')
+          $(h[14]).val(v.cracks==1?'Есть':'Нет')
+          $(h[15]).val(v.overhanging_t==1?'Есть':'Нет')
+          $(h[16]).val(v.drips==1?'Есть':'Нет')
+          $('.save2').attr('data-id',v.id)
+        })
         let img2=$('<img>')
         img2.attr('src','../assets/images/edit.png')
         img2.addClass('img_edit')
@@ -361,48 +403,82 @@ function pagin(obj){
 
   
   async function addTree(jsondata) {
-    if(jsondata[1].value && jsondata[2].value && jsondata[3].value && jsondata[4].value && jsondata[5].value && jsondata[6].value && jsondata[7].value
+    if(jsondata[1].value  && jsondata[3].value && jsondata[4].value && jsondata[5].value && jsondata[6].value && jsondata[7].value
     && jsondata[8].value && jsondata[9].value && jsondata[10].value && jsondata[11].value && jsondata[12].value && jsondata[13].value && jsondata[14].value
     && jsondata[15].value
     ){
-      var jsonbody = {}; 
-      var data2 = new FormData(); 
-      data2.append('treeImage', $('.input_file').prop('files')[0]); 
-      jsonbody['species'] = 1;
-      jsonbody['name'] = jsondata[1].value;
-      jsonbody['location'] = Number((jsondata[9].value)[jsondata[9].value.length-1])
-      jsonbody['coordinates'] = [jsondata[7].value, jsondata[8].value];
-      jsonbody['cdiameter'] = jsondata[6].value;
-      jsonbody['height'] = jsondata[3].value;
-      jsonbody['tdiameter'] = jsondata[4].value;
-      jsonbody['year'] = 2001;
-      jsonbody['dry'] = jsondata[11].value==='Есть'?1:0;
-      jsonbody['detachment'] = jsondata[12].value==='Есть'?1:0;
-      jsonbody['cracks'] = jsondata[14].value==='Есть'?1:0;;
-      jsonbody['drips'] = jsondata[16].value==='Есть'?1:0;
-      jsonbody['overhanging_t'] = jsondata[15].value==='Есть'?1:0;;
-      jsonbody['overhanging_p'] = jsondata[10].value==='Есть'?1:0
-      jsonbody['overhanging_d'] = jsondata[13].value==='Есть'?1:0;
-      jsonbody['overhanging_comments'] = jsondata[2].value?jsondata[2].value:null;
-      jsonbody['tilt'] = jsondata[5].value?jsondata[5].value:0;
-      const blob = new Blob([JSON.stringify(jsonbody)], {
-        type: 'application/json'
-      });
-      data2.append('jsonbody', blob);
-      await axios.post(serverURL + url_addtree, data2).then(response => {
-        alert('Дерево добавлено успешно')
-        $('#addModal').modal('hide');
-        for(let el of jsondata){
-          el.value=''
-        }
-      }).catch((error) => {
-        alert('Ошибки на сервере, попробуйте позже')
-      });
+      if(jsondata[7].value.length>=9 && jsondata[8].value.length>=9){
+        var jsonbody = {}; 
+        var data2 = new FormData(); 
+        data2.append('treeImage', $('.input_file').prop('files')[0]); 
+        jsonbody['species'] = 1;
+        jsonbody['name'] = jsondata[1].value;
+        jsonbody['location'] = Number((jsondata[9].value)[jsondata[9].value.length-1])
+        jsonbody['coordinates'] = [jsondata[7].value, jsondata[8].value];
+        jsonbody['cdiameter'] = jsondata[6].value;
+        jsonbody['height'] = jsondata[3].value;
+        jsonbody['tdiameter'] = jsondata[4].value;
+        jsonbody['year'] = 2001;
+        jsonbody['dry'] = jsondata[11].value==='Есть'?1:0;
+        jsonbody['detachment'] = jsondata[12].value==='Есть'?1:0;
+        jsonbody['cracks'] = jsondata[14].value==='Есть'?1:0;
+        jsonbody['drips'] = jsondata[16].value==='Есть'?1:0;
+        jsonbody['overhanging_t'] = jsondata[15].value==='Есть'?1:0;
+        jsonbody['overhanging_p'] = jsondata[10].value==='Есть'?1:0;
+        jsonbody['overhanging_d'] = jsondata[13].value==='Есть'?1:0;
+        jsonbody['overhanging_comments'] = jsondata[2].value?jsondata[2].value:null;
+        jsonbody['tilt'] = jsondata[5].value?jsondata[5].value:0;
+        const blob = new Blob([JSON.stringify(jsonbody)], {
+          type: 'application/json'
+        });
+        data2.append('jsonbody', blob);
+        await axios.post(serverURL + url_addtree, data2).then(response => {
+          alert('Дерево добавлено успешно')
+          $('#addModal').modal('hide');
+          for(let el of jsondata){
+            el.value=''
+          }
+          location.reload();
+        }).catch((error) => {
+          alert('Ошибки на сервере, попробуйте позже')
+        });
+      }
+      else{
+        alert('В координатах, после запятой, должно быть минимум 6 знаков')
+      }
+     
     }
     else{
       alert('Заполните все поля')
     }
       
    }
+   async function editTree(tree_id,jsondata) {
+    var jsonbody = {};
+    jsonbody['tree_id'] = tree_id;
+    jsonbody['species'] = 1;
+    jsonbody['name'] = jsondata[1].value;
+    jsonbody['coordinates'] = [Number(jsondata[7].value), Number(jsondata[8].value)];
+    jsonbody['cdiameter'] = jsondata[6].value;
+    jsonbody['height'] = jsondata[3].value;
+    jsonbody['tdiameter'] = jsondata[4].value;
+    jsonbody['year'] = 2001;
+    jsonbody['dry'] = jsondata[11].value==='Есть'?1:0;
+    jsonbody['detachment'] = jsondata[12].value==='Есть'?1:0;
+    jsonbody['cracks'] = jsondata[14].value==='Есть'?1:0;;
+    jsonbody['drips'] = jsondata[16].value==='Есть'?1:0;
+    jsonbody['overhanging_t'] = jsondata[15].value==='Есть'?1:0;
+    jsonbody['overhanging_p'] = jsondata[10].value==='Есть'?1:0
+    jsonbody['overhanging_d'] = jsondata[13].value==='Есть'?1:0;
+    jsonbody['overhanging_comments'] = jsondata[2].value?jsondata[2].value:null;
+    jsonbody['tilt'] = jsondata[5].value?jsondata[5].value:0;
+    console.log(jsonbody)
+    await axios.post(serverURL + url_editTree, JSON.stringify(jsonbody)).then(response => {
+console.log(response.data);
+}).catch((error) => {
+console.log(error);
+        // если ошибка, значит скорее всего уже есть такой логин. Надо сообщить об этом пользователю
+});
+}
 
   

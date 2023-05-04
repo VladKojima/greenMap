@@ -22,7 +22,7 @@ function select(filter,trs,point,id){
     if(filter.val()!='Вид' && filter.val()!='Площадка' ){
     if( filter.attr('id')==point){
         for(let tr of trs){
-            if(!tr.children[id].innerHTML.includes(filter.val())){
+            if(!(tr.children[id].innerHTML.toUpperCase()).includes(filter.val().toUpperCase())){
                     $(tr).remove()
             }
         }
