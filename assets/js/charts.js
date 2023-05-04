@@ -270,3 +270,5 @@ function setLocation(location) {
     item.destroy();
   ddraw();
 }
+
+
