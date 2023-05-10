@@ -94,7 +94,7 @@ function ddraw() {
           backgroundColor:colorarr,
         }],
         labels: Array.from(types.keys()),
-        
+
 
 
 
@@ -151,13 +151,15 @@ function ddraw() {
   }
 
   {
-    let opil = [0, 0];
+    let needed = filtered.filter(item=>item['overhanging_p'] || item['overhanging_d'] || item['overhanging_t']);
 
-    filtered.forEach((item) => {
-      if (item['overhanging_p'] || item['overhanging_d'] || item['overhanging_t'])
-        opil[1]++;
-      else opil[0]++;
-    });
+    value1.textContent = needed.filter(item=>item['overhanging_p']).length;
+    value2.textContent = needed.filter(item=>item['overhanging_d']).length;
+    value3.textContent = needed.filter(item=>item['overhanging_t']).length;
+
+    value1.parentElement.parentElement.querySelector('.progress-bar').style.width = needed.length > 0 ? value1.textContent/needed.length * 100 + '%' : '0%';
+    value2.parentElement.parentElement.querySelector('.progress-bar').style.width = needed.length > 0 ? value2.textContent/needed.length * 100 + '%' : '0%';
+    value3.parentElement.parentElement.querySelector('.progress-bar').style.width = needed.length > 0 ? value3.textContent/needed.length * 100 + '%' : '0%';
 
 
     let ctx = dgs[2].getContext('2d');
@@ -165,39 +167,33 @@ function ddraw() {
     let gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
         gradientStroke1.addColorStop(0, '#259AFF');
         gradientStroke1.addColorStop(1, '#00539E');
-  
+
     let gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-        gradientStroke2.addColorStop(0, '#EE513B');  
-        gradientStroke2.addColorStop(1, '#D13200'); 
-  
+        gradientStroke2.addColorStop(0, '#EE513B');
+        gradientStroke2.addColorStop(1, '#D13200');
+
     let gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
         gradientStroke3.addColorStop(0, '#ff8359');
-        gradientStroke3.addColorStop(1, '#ffdf40'); 
+        gradientStroke3.addColorStop(1, '#ffdf40');
 
     let chart =
       new Chart(dgs[2], {
         type: 'pie',
         data: {
           datasets: [{
-            data: opil,
+            data: [filtered.length-needed.length, needed.length],
             label: 'Подлежит опиловке',
           backgroundColor:[
             gradientStroke1,
             gradientStroke2,
           ],
-          
 
-          
+
+
           },
-          
+
         ],
           labels: ['Не подлежит опиловке', 'Подлежит опиловке'],
-
-          
-
-          
-
-
           options: {
             maintainAspectRatio: false,
             cutout: 110,
@@ -270,5 +266,3 @@ function setLocation(location) {
     item.destroy();
   ddraw();
 }
-
-
