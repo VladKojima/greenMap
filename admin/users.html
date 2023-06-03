@@ -7,14 +7,14 @@
     <title>Админ панель. Пользователи</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/media.css">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="../assets/js/index.js">
     </script>
 </head>
 
 <body>
     <main>
-        <div class="wrap">
+        <div class="navbar-nav fixed-top">
             <div id="header">
                 <ul class="header__content">
                     <li class="header__content-item"><a href="index.html"><img class="img-fluid header__content__img"  src="../assets/images/icons/home.svg"></a></li>
@@ -45,8 +45,17 @@
             <li><?xml version="1.0" ?><svg class='text__list-bullet' viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M413.8 447.1L256 448l0 31.99C256 497.7 241.8 512 224.1 512c-17.67 0-32.1-14.32-32.1-31.99l0-31.99l-158.9-.0099c-28.5 0-43.69-34.49-24.69-56.4l68.98-79.59H62.22c-25.41 0-39.15-29.8-22.67-49.13l60.41-70.85H89.21c-21.28 0-32.87-22.5-19.28-37.31l134.8-146.5c10.4-11.3 28.22-11.3 38.62-.0033l134.9 146.5c13.62 14.81 2.001 37.31-19.28 37.31h-10.77l60.35 70.86c16.46 19.34 2.716 49.12-22.68 49.12h-15.2l68.98 79.59C458.7 413.7 443.1 447.1 413.8 447.1z" stroke="green" fill="green"/></svg>Площадка №4-Общежития СЭИ</li>
         </ul>
         <p>Для работы с информационной системой необходимо выбрать одну из площадок.</p> -->
-        <h3>Пользователи системы</h3>
-        <table class="table table-striped">
+        <div class="d-flex mb-2" style="padding-top: 4.5rem!important">
+            <div class="">
+                <h3>Пользователи системы</h3>
+                <button type="button" class="btn btn-primary">
+                    Добавить пользователя
+                  </button>
+            </div>
+            
+        </div>
+            <div class="pb-5">
+        <table id="mainTable" class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">№</th>
@@ -56,7 +65,10 @@
                 <th scope="col">Настройки</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="mainBody">
+
+            </tbody>
+         <!--   <tbody>
               <tr>
                 <th scope="row">1</th>
                 <td>Кушникова Елена Вадимовна</td>
@@ -79,7 +91,9 @@
                 <td><?xml version="1.0" ?><svg height="24" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M6 34.5v7.5h7.5l22.13-22.13-7.5-7.5-22.13 22.13zm35.41-20.41c.78-.78.78-2.05 0-2.83l-4.67-4.67c-.78-.78-2.05-.78-2.83 0l-3.66 3.66 7.5 7.5 3.66-3.66z"/><path d="M0 0h48v48h-48z" fill="none"/></svg></td>
               </tr>
             </tbody>
+            -->
           </table>
+            </div>
         </div>
     </section>
     <!--
@@ -129,16 +143,22 @@
 
         </section> -->
     </main>
-
-    <div class="wrap">
-        <div id="footer">
-            <ul class="footer__content">
-                <li class="footer__content-item">Разработано <a class="link-accent" href="https://inpit.sstu.ru">ИНПИТ</a></li>
-                <li class="footer__content-item">СГТУ им. Гагарина Ю.А.</li>
-                <li class="footer__content-item">2022</li>
-            </ul>
+    
+        <div class="fixed-bottom">
+            <div id="footer">
+                <ul class="footer__content">
+                    <li class="footer__content-item">Разработано <a class="link-accent" href="https://inpit.sstu.ru">ИНПИТ</a></li>
+                    <li class="footer__content-item">СГТУ им. Гагарина Ю.А.</li>
+                    <li class="footer__content-item">2022</li>
+                </ul>
+            </div>
         </div>
-    </div>
+        <script src="../assets/js/jquery-3.7.0.js"> </script>
+        <script src="../assets/js/create.js"> </script>
+        <script>
+            userOut()
+        </script>
+    
 </body>
 
 </html>
